@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerPath - Your Career Guidance</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+
+    /* Professional Animations */
+    .animate-fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    } */
+
+    .animate-slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.6s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    .delay-5 { animation-delay: 1.0s; }
+    .delay-6 { animation-delay: 1.2s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hover Effects */
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Bootstrap Icon Fallback */
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    Home Page Animations
+    .hero-text {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 20px 0;
+    }
+
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      transform-style: preserve-3d;
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+    }
+
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, 
+        transparent 25%,
+        rgba(255,255,255,0.2) 50%,
+        transparent 75%);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      100% {
+        transform: translate(100%, 100%) rotate(45deg);
+      }
+    }
+
+    .feature-card .card {
+      border: none;
+      border-radius: 15px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+    }
+
+    .feature-card:hover .card {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .stats-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      min-width: 150px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2c3e50;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Entrance Animations */
+    .animate__animated {
+      opacity: 0;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .features-row .card { animation-delay: 0.3s; }
+    .stats-section { animation-delay: 0.6s; }
+
+    /* Home Page Animations */
+    .main-content#home-content {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated Background Elements */
+    .main-content#home-content::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, 
+        transparent 45%,
+        rgba(52, 152, 219, 0.05) 50%,
+        transparent 55%);
+      animation: lightFlow 12s infinite linear;
+      z-index: -1;
+    }
+
+    @keyframes lightFlow {
+      0% { transform: translate(-30%, -30%) rotate(45deg); }
+      100% { transform: translate(30%, 30%) rotate(45deg); }
+    }
+
+    /* Text Entrance Animations */
+    #home-content h1 {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    #home-content p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+
+    #home-content .btn {
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadeInScale 0.8s ease-out forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Hover Effects */
+    .navbar-brand {
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      transform: rotate(-5deg) scale(1.1);
+    }
+
+    #home-content .btn {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home-content .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+    }
+
+    #home-content .btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
+    }
+
+    #home-content .btn:hover::after {
+      left: 120%;
+    }
+
+    /* Floating Animation */
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    #home-content h1 {
+      animation: 
+        fadeInUp 0.8s ease-out forwards,
+        /* floating 6s ease-in-out infinite; */
+      animation-delay: 0.3s, 1.5s;
+    }
+
+    /* Animated Background Effects */
+    #about-us-content {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    #about-us-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(241, 196, 15, 0.1) 0%, transparent 50%);
+      animation: particleFlow 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes particleFlow {
+      0% {
+        background-position: 0% 0%, 100% 100%;
+      }
+      50% {
+        background-position: 100% 100%, 0% 0%;
+      }
+      100% {
+        background-position: 0% 0%, 100% 100%;
+      }
+    }
+
+    #about-us-content::after {
+      content: '';
+      position: absolute;
+      /* top: -50%; */
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, 
+        transparent 45%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 55%);
+      animation: lightStreak 8s infinite linear;
+      z-index: -1;
+    }
+
+    @keyframes lightStreak {
+      0% {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      100% {
+        transform: translate(50%, 50%) rotate(45deg);
+      }
+    }
+
+    /* Floating animation for content */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Add transition to list items */
+    #about-us-content li {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #about-us-content {
+        background: linear-gradient(135deg, #ffffff, #f8f9fa);
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        transform: translateY(20px);
+        opacity: 0;
+        animation: slideUpFadeIn 0.6s ease forwards;
+      }
+
+      @keyframes slideUpFadeIn {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      #about-us-content h1 {
+        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+      }
+
+      #about-us-content h1::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #3498db;
+        border-radius: 2px;
+      }
+
+      #about-us-content ul {
+        background: rgba(52, 152, 219, 0.05);
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0;
+        border: 1px solid rgba(52, 152, 219, 0.1);
+      }
+
+      #about-us-content li {
+        padding: 12px 20px;
+        margin: 10px 0;
+        background: white;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border-left: 4px solid #3498db;
+      }
+
+      #about-us-content li:hover {
+        transform: translateX(10px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+      }
+
+      #about-us-content li::before {
+        content: '✓';
+        color: #3498db;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+
+      #about-us-content p {
+        color: #4a5568;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+      }
+
+      .btn-about {
+        background: #3498db;
+        border: none;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-about:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+      }
+
+      .btn-about::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: rotate(45deg);
+        transition: all 0.5s ease;
+      }
+
+      .btn-about:hover::after {
+        left: 120%;
+      }
+
+      /* Aptitude Test Background Animation */
+      #aptitude-test-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      #aptitude-test-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: 
+          repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 10px,
+            rgba(0,0,0,0.08) 10px,
+            rgba(0,0,0,0.08) 20px
+          );
+        animation: movingLines 20s linear infinite;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      @keyframes movingLines {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(100px, 100px);
+        }
+      }
+
+      #aptitude-test-form,
+      #question-container,
+      #final-results {
+        position: relative;
+        z-index: 1;
+        background: rgba(255,255,255,0.95);
+      }
+    /* Global styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      min-height: 100vh;
+      padding-top: 70px; /* Avoid content under fixed navbar */
+    }
+
+    /* Navbar styling */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #343a40;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: white !important;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .navbar-brand:hover,
+    .nav-link:hover {
+      color: #ddd !important;
+    }
+
+    /* Home content styling */
+    .main-content {
+      padding: 50px;
+      text-align: center;
+    }
+
+    .main-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .main-content p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    /* Aptitude Test container improvements */
+    #aptitude-test-container {
+      display: none;
+      max-width: 700px;
+      margin: 20px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    /* Header Banner */
+    #aptitude-test-container header {
+      background-color: #343a40;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    /* Form and Questions Styling */
+    #aptitude-test-form,
+    #question-container {
+      padding: 30px;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    .form-select,
+    .form-control {
+      border-radius: 5px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .form-select:focus,
+    .form-control:focus {
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Question container enhancements */
+    #question-container {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #aptitude-test-questions p {
+      font-size: 1.25rem;
+      margin-bottom: 15px;
+    }
+
+    .form-check {
+      margin-bottom: 10px;
+    }
+
+    /* Button styling */
+    button.btn {
+      border-radius: 50px;
+      padding: 10px 25px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button.btn:hover {
+      transform: scale(1.03);
+    }
+
+    /* Progress Bar container */
+    #quiz-progress {
+      margin-bottom: 20px;
+    }
+
+    /* Final results styling */
+    #final-results {
+      display: none;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #final-results h3 {
+      margin-bottom: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-xl"> <!-- Changed to expand on extra-large screens -->
+    <div class="container-fluid">
+      <a class="navbar-brand" onclick="showHome()">CareerPath</a>
+      
+      <!-- Only show toggle button on smaller screens -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto flex-nowrap"> <!-- Added flex-nowrap -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="showHome()">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Our Story</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Get Guidance
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  onclick="showAptitudeTest()"
+                  >Aptitude Test</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="showAboutUs()">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--<nav class="navbar">
+    <div class="container-fluid">
+    Clicking the logo brings you back home
+      <a class="navbar-brand" onclick="showHome()">CareerPath</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          Clicking Home resets the UI
+          <li class="nav-item">
+            <a class="nav-link" onclick="showHome()">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Our Story</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Get Guidance
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  onclick="showAptitudeTest()"
+                  >Aptitude Test</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showAboutUs()">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>-->
+
+  <!-- Home content -->
+  <div class="main-content container" id="home-content">
+    <div class="text-center">
+      <h1 class="display-5 fw-bold mb-4 animate-fade-in">Find Your Ideal Career Path</h1>
+      <p class="lead mb-4 animate-fade-in delay-1">Strategic Career Planning for All Stages</p>
+      
+      <div class="col-lg-8 mx-auto">
+        <p class="mb-4 animate-fade-in delay-2">Discover opportunities aligned with your skills and aspirations through our intelligent career assessment system.</p>
+      </div>
+  
+      <button class="btn btn-primary btn-lg px-5 animate-fade-in delay-3" onclick="showAptitudeTest()">
+        Start Free Assessment
+      </button>
+  
+      <!-- Value Proposition Section -->
+      <div class="row mt-5 g-4">
+        <div class="col-md-4 animate-slide-up delay-4 animate-fade-in">
+          <div class="p-4 card-hover">
+            <div class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px;">
+              <svg class="bi" width="30" height="30" fill="currentColor" style="margin: 15px;">
+                <use xlink:href="#speedometer2"/>
+              </svg>
+            </div>
+            <h3>Quick Analysis</h3>
+            <p>15-minute comprehensive career evaluation</p>
+          </div>
+        </div>
+  
+        <div class="col-md-4 animate-slide-up delay-5 animate-fade-in">
+          <div class="p-4 card-hover">
+            <div class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px;">
+              <svg class="bi" width="30" height="30" fill="currentColor" style="margin: 15px;">
+                <use xlink:href="#graph-up"/>
+              </svg>
+            </div>
+            <h3>Growth Metrics</h3>
+            <p>Industry-aligned career progression maps</p>
+          </div>
+        </div>
+  
+        <div class="col-md-4 animate-slide-up delay-6 animate-fade-in">
+          <div class="p-4 card-hover">
+            <div class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px;">
+              <svg class="bi" width="30" height="30" fill="currentColor" style="margin: 15px;">
+                <use xlink:href="#people-circle"/>
+              </svg>
+            </div>
+            <h3>Expert Support</h3>
+            <p>Connect with career specialists</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Animated Stats Section
+    <div class="stats-section mt-5 animate__animated">
+      <div class="stat-item">
+        <div class="stat-number">500K+</div>
+        <div class="stat-label">Careers Explored</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">User Satisfaction</div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- About Us Content -->
+  <div class="main-content container" id="about-us-content" style="display: none;">
+    <h1>About CareerPath</h1>
+    <p class="lead">Embarking on a career journey? We're here to light your path! 🌟</p>
+    
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <p>At CareerPath, we believe everyone deserves personalized career guidance regardless of age or current stage in life. Our innovative platform combines AI-powered insights with human expertise to help you navigate your professional journey.</p>
+  
+        <div class="feature-list">
+          <h4 class="text-center mb-4">We Specialize In:</h4>
+          <ul class="text-start">
+            <li>Student career discovery programs</li>
+            <li>College major selection guidance</li>
+            <li>Professional skill development</li>
+            <li>Mid-career transition support</li>
+          </ul>
+        </div>
+  
+        <p class="text-center mt-4">💡 Our dynamic assessments adapt to your unique situation, providing tailored recommendations whether you're just starting out or looking to make a change.</p>
+      </div>
+    </div>
+  
+    <button class="btn btn-about text-white mt-4" onclick="showHome()">
+      ← Back to Home
+    </button>
+  </div>
+
+  <!-- Aptitude Test Container with Header -->
+  <div id="aptitude-test-container">
+    <header>Aptitude Test</header>
+
+    <!-- Form Fields -->
+    <div id="aptitude-test-form">
+      <div class="mb-3">
+        <label for="current-status" class="form-label">Current Status:</label>
+        <select class="form-select" id="current-status">
+          <option value="school">School</option>
+          <option value="highschool">High School</option>
+          <option value="college">College</option>
+          <option value="job">Job</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="current-field" class="form-label">Current Field:</label>
+        <input type="text" class="form-control" id="current-field" />
+      </div>
+      <div class="mb-3">
+        <label for="interest-field" class="form-label">Field of Interest:</label>
+        <input type="text" class="form-control" id="interest-field" />
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+      </div>
+    </div>
+
+    <!-- Questions Container -->
+    <div id="question-container">
+      <!-- Progress bar for quiz -->
+      <div class="progress" id="quiz-progress">
+        <div
+          id="progress-bar"
+          class="progress-bar progress-bar-striped progress-bar-animated"
+          role="progressbar"
+          style="width: 0%;"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          0%
+        </div>
+      </div>
+
+      <div id="aptitude-test-questions"></div>
+      <div class="text-center mt-3">
+        <button class="btn btn-primary" id="next-button" onclick="nextQuestion()">
+          Next Question
+        </button>
+      </div>
+    </div>
+
+    <!-- Final Results -->
+    <div id="final-results">
+      <h3>Your Results</h3>
+      <p id="final-results-text"></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let results = {};
+
+    // Reset to initial home page view
+    function showHome() {
+      document.getElementById("about-us-content").style.display = "none";
+      document.getElementById("home-content").style.display = "block";
+      document.getElementById("aptitude-test-container").style.display = "none";
+      // Reset quiz variables and UI
+      currentQuestionIndex = 0;
+      results = {};
+      document.getElementById("aptitude-test-form").style.display = "block";
+      document.getElementById("question-container").style.display = "none";
+      document.getElementById("final-results").style.display = "none";
+      document.getElementById("final-results-text").innerHTML = "";
+      // Reset form fields
+      document.getElementById("current-status").selectedIndex = 0;
+      document.getElementById("current-field").value = "";
+      document.getElementById("interest-field").value = "";
+      // Reset progress bar
+      updateProgress(0);
+      // Scroll to top for better UX
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      document.querySelectorAll('#home-content h1, #home-content p, #home-content .btn').forEach(el => {
+        el.style.animation = 'none';
+        setTimeout(() => {
+          el.style.animation = '';
+        }, 10);
+      });
+
+      const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+      animatedElements.forEach(el => {
+        el.style.animation = 'none';
+        void el.offsetWidth; // Trigger reflow
+        el.style.animation = '';
+      });
+      
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      document.getElementById("home-content").style.display = "block";
+      document.getElementById("aptitude-test-container").style.display = "none";
+      document.getElementById("about-us-content").style.display = "none";
+
+      anime({
+        targets: '.animate__animated',
+        opacity: [0, 1],
+        translateY: [30, 0],
+        delay: anime.stagger(100),
+        easing: 'easeOutExpo',
+        duration: 800
+      });
+    }
+
+    // When "Take Aptitude Test" is clicked, hide home content and show test container
+    function showAptitudeTest() {
+      document.getElementById("home-content").style.display = "none";
+      document.getElementById("aptitude-test-container").style.display = "block";
+      // Scroll to the test container for better UX
+      document.getElementById("aptitude-test-container").scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+
+    async function startQuiz() {
+      const currentStatus = document.getElementById("current-status").value;
+      const currentField = document.getElementById("current-field").value;
+      const interestField = document.getElementById("interest-field").value;
+
+      results = { currentStatus, currentField, interestField };
+
+      const response = await fetch("http://localhost:3000/generate-questions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentField, interestField }),
+      });
+
+      if (!response.ok) {
+        alert("Failed to fetch questions.");
+        return;
+      }
+
+      questions = await response.json();
+      currentQuestionIndex = 0;
+
+      // Hide the form fields so that only questions are shown
+      document.getElementById("aptitude-test-form").style.display = "none";
+      document.getElementById("question-container").style.display = "block";
+      document.getElementById("final-results").style.display = "none";
+      
+      displayQuestion();
+    }
+
+    function displayQuestion() {
+      const question = questions[currentQuestionIndex];
+      const container = document.getElementById("aptitude-test-questions");
+      container.innerHTML = `<p>${currentQuestionIndex + 1}. ${question.question}</p>`;
+
+      question.options.forEach((option, index) => {
+        const input = `<div class="form-check">
+          <input type="radio" class="form-check-input" name="question" value="${option}" id="option-${index}">
+          <label class="form-check-label" for="option-${index}">${option}</label>
+        </div>`;
+        container.innerHTML += input;
+      });
+
+      const nextBtn = document.getElementById("next-button");
+      // Change button text to "Finish" if this is the last question, otherwise "Next Question"
+      if (currentQuestionIndex === questions.length - 1) {
+        nextBtn.textContent = "Finish";
+      } else {
+        nextBtn.textContent = "Next Question";
+      }
+
+      // Update the progress bar for the current question
+      updateProgress(currentQuestionIndex);
+    }
+
+    function nextQuestion() {
+      const selectedOption = document.querySelector("input[name='question']:checked");
+      if (!selectedOption) {
+        alert("Please select an option.");
+        return;
+      }
+
+      // Record the user's answer
+      results[`question-${currentQuestionIndex}`] = selectedOption.value;
+      currentQuestionIndex++;
+
+      // If there are more questions, display the next one. Otherwise, calculate the results.
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+      } else {
+        calculateAptitude();
+      }
+    }
+
+    function updateProgress(index) {
+      const total = questions.length;
+      // If no questions yet, or just started, keep it at 0
+      if (total === 0) {
+        setProgressBar(0);
+        return;
+      }
+      // Calculate progress based on the question index
+      // For question #index, progress is (index / total)*100
+      const progress = (index / total) * 100;
+      setProgressBar(progress);
+    }
+
+    function setProgressBar(value) {
+      const progressBar = document.getElementById("progress-bar");
+      const roundedValue = Math.round(value);
+      progressBar.style.width = `${roundedValue}%`;
+      progressBar.setAttribute("aria-valuenow", roundedValue);
+      progressBar.textContent = `${roundedValue}%`;
+    }
+
+    async function calculateAptitude() {
+      try {
+        const response = await fetch("http://localhost:3000/analyze-results", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ results }),
+        });
+
+        if (!response.ok) {
+          alert("Failed to analyze results.");
+          return;
+        }
+
+        let data;
+        try {
+          data = await response.json();
+        } catch (err) {
+          console.error("Error parsing JSON:", err);
+          alert("There was an error processing the results.");
+          return;
+        }
+
+        if (!data || !data.analysis) {
+          alert("The results could not be processed correctly.");
+          return;
+        }
+
+        // Fill the progress bar to 100%
+        setProgressBar(100);
+
+        // Hide question container, show final results
+        document.getElementById("aptitude-test-questions").style.display = "none";
+        document.getElementById("next-button").style.display = "none";
+        document.getElementById("final-results").style.display = "block";
+        document.getElementById("final-results-text").innerHTML = data.analysis;
+      } catch (error) {
+        console.error("Error in calculateAptitude:", error);
+        alert("An unexpected error occurred while analyzing the results.");
+      }
+    }
+
+    function showAboutUs() {
+      document.getElementById("home-content").style.display = "none";
+      document.getElementById("aptitude-test-container").style.display = "none";
+      document.getElementById("about-us-content").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Reset animations when returning to home
+      const homeContent = document.getElementById('home-content');
+      homeContent.style.animation = 'none';
+      setTimeout(() => {
+        homeContent.style.animation = '';
+      }, 10);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+  // Animate elements on load
+  anime({
+      targets: '.animate__animated',
+      opacity: [0, 1],
+      translateY: [30, 0],
+      delay: anime.stagger(100),
+      easing: 'easeOutExpo',
+      duration: 800
+    });
+  });
+  </script>
+
+  <!-- Bootstrap Icons -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="speedometer2" viewBox="0 0 16 16">
+    <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+    <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+  </symbol>
+
+  <symbol id="graph-up" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0zm10 11.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.6l-3.613-4.417a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61L13.445 11H10.5a.5.5 0 0 0-.5.5z"/>
+  </symbol>
+
+  <symbol id="people-circle" viewBox="0 0 16 16">
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+  </symbol>
+</svg>
+</body>
+</html>
