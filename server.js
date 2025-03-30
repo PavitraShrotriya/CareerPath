@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.post('/generate-questions', async (req, res) => {
+app.post('${window.location.origin}/generate-questions', async (req, res) => {
     try {
         const { currentField, interestField } = req.body;
         const prompt = `Generate 10 unique career quidance aptitude test questions tailored for a person with the following details:
@@ -43,7 +43,7 @@ app.post('/generate-questions', async (req, res) => {
     }
 });
 
-app.post('/analyze-results', async (req, res) => {
+app.post('${window.location.origin}/analyze-results', async (req, res) => {
     try {
         const { results } = req.body;
         const prompt = `Based on the following aptitude test results, provide a brief career recommendation in 2-3 sentences. Focus on the most suitable career path without listing individual responses.
