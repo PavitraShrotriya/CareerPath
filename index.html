@@ -981,7 +981,9 @@
 
       results = { currentStatus, currentField, interestField };
 
-      const response = await fetch("http://localhost:3000/generate-questions", {
+      const apiUrl = `${window.location.origin}/generate-questions`;
+
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentField, interestField }),
@@ -1070,7 +1072,8 @@
 
     async function calculateAptitude() {
       try {
-        const response = await fetch("http://localhost:3000/analyze-results", {
+        const apiUrl1 = `${window.location.origin}/analyze-results`;
+        const response = await fetch(apiUrl1, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ results }),
