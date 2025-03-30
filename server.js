@@ -68,6 +68,30 @@ app.post('/analyze-results', async (req, res) => {
     }
 });
 
+app.post('/career-suggestions', async (req, res) => {
+    try {
+        const userProfile = req.body;
+        const prompt = `Analyze this profile and suggest 5 career paths:
+        Skills: ${userProfile.skills}
+        Interests: ${userProfile.interests}
+        Experience: ${userProfile.experience}
+        Return as JSON array with fields: career_title, growth_outlook, required_skills`;
+
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const result = await model.generateContent({ contents: [{ role: "user", parts: [{ text: prompt }] }] });
+
+        const textResponse = result.response.candidates[0].content.parts[0].text;
+        const cleanJson = textResponse.replace(/```json|```/g, '').replace(/```/g, '').trim();
+        const analysis = JSON.parse(cleanJson);
+
+        res.json({ analysis });
+    } catch (error) {
+        console.error('Error generating career suggestions:', error);
+        res.status(500)
+        res.json({ error: 'Failed to generate career suggestions.' });
+        }
+});
+
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
