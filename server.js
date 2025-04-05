@@ -127,12 +127,13 @@ app.get('/api/user/profile', authMiddleware, async (req, res) => {
   }
 });
 
-app.post('/generate-questions', authMiddleware, async (req, res) => {
+app.post('/generate-questions', async (req, res) => {
     try {
-        const { currentField, interestField } = req.body;
+        const { currentStatus, currentField, interestField } = req.body;
         const prompt = `Generate 10 unique career quidance aptitude test questions tailored for a person with the following details:
+            - Current stage: ${currentStatus}
             - Current Field: ${currentField}
-            - Field of Interest: ${interestField}
+            - Area of Interest: ${interestField}
 
             The questions should evaluate the user's skills, problem-solving ability, personality traits, and work preferences related to career paths and should evaluate if the person is actually suited for his current field or field of interest.
 
@@ -156,7 +157,7 @@ app.post('/generate-questions', authMiddleware, async (req, res) => {
     }
 });
 
-app.post('/analyze-results', authMiddleware, async (req, res) => {
+app.post('/analyze-results', async (req, res) => {
     try {
         const { results } = req.body;
         const prompt = `Based on the following aptitude test results, provide a brief career recommendation in 2-3 sentences. Focus on the most suitable career path without listing individual responses.
