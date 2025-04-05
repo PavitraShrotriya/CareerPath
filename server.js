@@ -212,6 +212,42 @@ app.post('/career-suggestions', async (req, res) => {
         }
 });
 
+// Endpoint to handle chatbot messages for career guidance
+app.post('/career-chat', async (req, res) => {
+  try {
+    const userMessage = req.body.message;
+
+    // Prompt Gemini to respond strictly within the domain of career guidance
+    const prompt = `
+You are a career guidance assistant. Only answer questions related to careers, studies, skills, jobs, and professional development.
+
+User: ${userMessage}
+
+Provide a clear, concise, and helpful response in 2-3 sentences.
+`;
+
+    // Use Gemini model (adjust 'gemini-1.5-flash' if you're using a different version)
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+    const result = await model.generateContent({
+      contents: [
+        {
+          role: 'user',
+          parts: [{ text: prompt }]
+        }
+      ]
+    });
+
+    const answer = result.response.candidates[0].content.parts[0].text;
+
+    res.json({ answer });
+
+  } catch (error) {
+    console.error('Error in /career-chat endpoint:', error);
+    res.status(500).json({ error: 'Failed to generate chat response.' });
+  }
+});
+
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
