@@ -14,7 +14,7 @@
     .animate-fade-in {
       opacity: 0;
       animation: fadeIn 0.8s ease-out forwards;
-    } */
+    }
 
     .animate-slide-up {
       opacity: 0;
@@ -780,68 +780,199 @@
       right: 15px;
     }
 
+    /* Login Styles */
+    /* .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideUpFadeIn 0.6s ease forwards;
+    }
+
+    .login-card input {
+      border-radius: 8px;
+      padding: 12px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .login-card input:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    }
+
+    .login-card .btn-primary {
+      border-radius: 8px;
+      padding: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .login-card .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+    }
+
+    #signup-content .form-control {
+      margin-bottom: 1rem;
+    }
+
+    #signup-content h2 {
+      margin-bottom: 2rem;
+    }
+    
+    #loginForm, #signupForm {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    } */
+
+    .toggle-text {
+      transition: all 0.3s ease;
+    }
+
+    .toggle-text a {
+      transition: color 0.2s ease;
+    }
+
+    .toggle-text a:hover {
+      color: #0d6efd !important;
+    }
+
+    .btn.btn-outline-light {
+      color: white;
+      border-color: white;
+    }
+    
+
+    .btn.btn-outline-light {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: white;
+    }
+
+    /* Auth Card Styling */
+    .auth-card {
+      border: none;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 2rem; /* Add padding to the card */
+    }
+
+    .auth-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive adjustments for auth forms */
+    @media (max-width: 576px) {
+      .auth-card {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+    }
+
+    .auth-card .form-control {
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .auth-card .form-control:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .auth-card .btn-primary {
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .auth-card .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .auth-card .toggle-text {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+
+    .auth-card .toggle-text a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+
+    .auth-card .toggle-text a:hover {
+      text-decoration: underline;
+    }
+
+
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-xl"> <!-- Changed to expand on extra-large screens -->
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-xl">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
       <a class="navbar-brand" onclick="showHome()">CareerPath</a>
-      
-      <!-- Only show toggle button on smaller screens -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto flex-nowrap"> <!-- Added flex-nowrap -->
-          <li class="nav-item">
-            <a class="nav-link" onclick="showHome()">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Our Story</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Get Guidance
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  onclick="showAptitudeTest()"
-                  >Aptitude Test</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="#" onclick="showCareerSuggestions()">
-                  Career Suggestions
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" onclick="showAboutUs()">About Us</a>
-          </li>
-        </ul>
+      <div class="d-flex align-items-center">
+        <!-- Collapsible nav links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" onclick="showHome()">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Our Story</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Get Guidance
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#" id="aptitudeTestBtn">Aptitude Test</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" onclick="showCareerSuggestions()">Career Suggestions</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="showAboutUs()">About Us</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Toggler and login button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="btn btn-outline-light ms-2" onclick="showAuth()">Login</a>
+        <div class="dropdown d-none" id="userMenu">
+          <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userIcon" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="userIcon">
+            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
+  
+  
   <!--<nav class="navbar">
     <div class="container-fluid">
     Clicking the logo brings you back home
@@ -906,9 +1037,9 @@
         <p class="mb-4 animate-fade-in delay-2">Discover opportunities aligned with your skills and aspirations through our intelligent career assessment system.</p>
       </div>
   
-      <button class="btn btn-primary btn-lg px-5 animate-fade-in delay-3" onclick="showAptitudeTest()">
-        Start Free Assessment
-      </button>
+      <button id="assessment-button" class="btn btn-primary btn-lg px-5 animate-fade-in delay-3" onclick="showCareerSuggestions()">
+        Get Career Suggestions
+      </button>      
   
       <!-- Value Proposition Section -->
       <div class="row mt-5 g-4">
@@ -950,6 +1081,62 @@
       </div>
     </div>
   </div>
+
+    <!-- Combined Auth Content -->
+    <div class="main-content container" id="auth-content" style="display: none;">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+          <div class="card auth-card shadow-lg">
+            <div class="card-body p-5">
+              <!-- Login Form -->
+              <form id="loginForm" style="display: block;">
+                <h2 class="card-title text-center mb-4">Welcome Back</h2>
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control form-control-lg" id="loginEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control form-control-lg" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 btn-lg">Sign In</button>
+              </form>
+    
+              <!-- Signup Form -->
+              <form id="signupForm" style="display: none;">
+                <h2 class="card-title text-center mb-4">Create Account</h2>
+                <div class="mb-3">
+                  <label for="signupName" class="form-label">Full Name</label>
+                  <input type="text" class="form-control form-control-lg" id="signupName" pattern="[A-Za-z].*" title="Name must start with an alphabet" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control form-control-lg" id="signupEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control form-control-lg" id="signupPassword" minlength="6" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control form-control-lg" id="signupConfirmPassword" minlength="6" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 btn-lg">Create Account</button>
+              </form>
+    
+              <!-- Toggle Links -->
+              <div class="text-center mt-4">
+                <p class="toggle-text">
+                  <span id="loginToggleText">Don't have an account? </span>
+                  <a href="#" onclick="toggleAuthForm()" class="text-decoration-none" id="authToggleLink">Sign up</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   
     <!-- Animated Stats Section
     <div class="stats-section mt-5 animate__animated">
@@ -1112,11 +1299,25 @@
     let currentQuestionIndex = 0;
     let results = {};
 
+
+    document.getElementById("aptitudeTestBtn").addEventListener("click", function (e) {
+      const token = localStorage.getItem("token"); // Assuming you're storing token in localStorage
+      if (!token) {
+        // Redirect to login
+        showAuth();
+      } else {
+        // Proceed to the test page
+        showAptitudeTest();
+      }
+    });
+
+
     // Reset to initial home page view
     function showHome() {
       document.getElementById("about-us-content").style.display = "none";
       document.getElementById("home-content").style.display = "block";
       document.getElementById("aptitude-test-container").style.display = "none";
+      document.getElementById("auth-content").style.display = "none";
       // Reset quiz variables and UI
       currentQuestionIndex = 0;
       results = {};
@@ -1153,18 +1354,35 @@
       document.getElementById("aptitude-test-container").style.display = "none";
       document.getElementById("about-us-content").style.display = "none";
       document.getElementById("career-suggestions-container").style.display = "none";
+
+      var navbarCollapse = document.getElementById('navbarNav');
+      if (navbarCollapse) {
+        navbarCollapse.classList.remove('show');
+      }
     }
 
     // When "Take Aptitude Test" is clicked, hide home content and show test container
     function showAptitudeTest() {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        showAuth();
+        return;
+      }
+
+      // If the user is logged in (token exists), proceed as before
+      document.getElementById("about-us-content").style.display = "none";
       document.getElementById("home-content").style.display = "none";
       document.getElementById("aptitude-test-container").style.display = "block";
-      // Scroll to the test container for better UX
-      document.getElementById("aptitude-test-container").scrollIntoView({
-        behavior: "smooth",
-      });
+      document.getElementById("auth-content").style.display = "none";
       document.getElementById("career-suggestions-container").style.display = "none";
-      document.getElementById("about-us-content").style.display = "none"; 
+
+      // Reset quiz elements (if needed when revisiting the test)
+      document.getElementById("aptitude-test-form").style.display = "block";
+      document.getElementById("question-container").style.display = "none";
+      document.getElementById("final-results").style.display = "none";
+      document.getElementById("final-results-text").innerHTML = "";
+      updateProgress(0);
     }
 
     async function startQuiz() {
@@ -1194,6 +1412,7 @@
       document.getElementById("aptitude-test-form").style.display = "none";
       document.getElementById("question-container").style.display = "block";
       document.getElementById("final-results").style.display = "none";
+      document.getElementById("auth-content").style.display = "none";
       
       displayQuestion();
     }
@@ -1299,6 +1518,7 @@
         document.getElementById("next-button").style.display = "none";
         document.getElementById("final-results").style.display = "block";
         document.getElementById("final-results-text").innerHTML = data.analysis;
+        document.getElementById("auth-content").style.display = "none";
       } catch (error) {
         console.error("Error in calculateAptitude:", error);
         alert("An unexpected error occurred while analyzing the results.");
@@ -1311,6 +1531,7 @@
       document.getElementById("about-us-content").style.display = "block";
       window.scrollTo({ top: 0, behavior: "smooth" });
       document.getElementById("career-suggestions-container").style.display = "none";
+      document.getElementById("auth-content").style.display = "none";
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1339,6 +1560,7 @@
       document.getElementById("aptitude-test-container").style.display = "none";
       document.getElementById("about-us-content").style.display = "none";
       document.getElementById("career-suggestions-container").style.display = "block";
+      document.getElementById("auth-content").style.display = "none";
       window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -1444,7 +1666,309 @@
     }, 500);
 
     document.getElementById('career-results').style.display = 'block';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownItems = document.querySelectorAll('.dropdown-menu .dropdown-item'); // Target dropdown items
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                if (navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                    bsCollapse.hide();
+                }
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        const getGuidanceLink = document.querySelector('#navbarDropdown'); // Select the "Get Guidance" link
+
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                // Check if the clicked link is NOT the "Get Guidance" link
+                if (link !== getGuidanceLink && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                    bsCollapse.hide();
+                }
+            });
+        });
+    });
+
+    // Show Login Page
+    function showAuth() {
+      hideAllSections();
+      document.getElementById("auth-content").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /*// Handle Login Form Submission
+    document.getElementById('auth-content').querySelector('#loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const btn = document.querySelector('#loginForm button');
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Signing in...';
+      btn.disabled = true;
+
+      // Simulated API call
+      setTimeout(() => {
+        btn.innerHTML = 'Sign In';
+        btn.disabled = false;
+        showHome();
+        alert('Login successful!');
+      }, 1500);
+    });*/
+
+    // Helper function to hide all sections
+    function hideAllSections() {
+      document.getElementById("home-content").style.display = "none";
+      document.getElementById("aptitude-test-container").style.display = "none";
+      document.getElementById("about-us-content").style.display = "none";
+      document.getElementById("career-suggestions-container").style.display = "none";
+      // document.getElementById("login-content").style.display = "none";
+      // document.getElementById("signup-content").style.display = "none";
+
+      const sections = [
+        'home-content',
+        'aptitude-test-container',
+        'about-us-content',
+        'career-suggestions-container',
+        'auth-content'
+      ];
+      sections.forEach(id => document.getElementById(id).style.display = 'none');
+
+      // Close mobile menu
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      if (navbarCollapse.classList.contains('show')) {
+        new bootstrap.Collapse(navbarCollapse).hide();
+      }
+    }
+
+
+    // Show Signup Page
+    function showAuth() {
+      hideAllSections();
+      document.getElementById("auth-content").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /*// Handle Signup Form Submission
+    document.getElementById('auth-content').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const btn = document.querySelector('#signupForm button');
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Creating account...';
+      btn.disabled = true;
+
+      // Simulated API call
+      setTimeout(() => {
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+        showHome();
+        alert('Account created successfully!');
+      }, 1500);
+    });*/
+
+    let isLoginForm = true;
+
+    function toggleAuthForm() {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const loginToggleText = document.getElementById('loginToggleText');
+      const authToggleLink = document.getElementById('authToggleLink');
+
+      if (loginForm.style.display === 'block') {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+        loginToggleText.textContent = "Already have an account?";
+        authToggleLink.textContent = "Log in";
+      } else {
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+        loginToggleText.textContent = "Don't have an account?";
+        authToggleLink.textContent = "Sign up";
+      }
+    }
+
+    function showAuth() {
+      hideAllSections();
+      document.getElementById("auth-content").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      isLoginForm = true;
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('signupForm').style.display = 'none';
+    }
+
+    // Updated Login Handler
+    document.getElementById('auth-content').querySelector('#loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Signing in...';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: document.getElementById('loginEmail').value,
+            password: document.getElementById('loginPassword').value
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.msg || 'Login failed');
+
+        localStorage.setItem('token', data.token);
+        updateNavbar();
+        loadUserProfile();
+        showHome();
+        alert('Login successful!');
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        btn.innerHTML = 'Sign In';
+        btn.disabled = false;
+      }
+    });
+
+    // Updated Signup Handler
+    document.getElementById('auth-content').querySelector('#signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Creating account...';
+      btn.disabled = true;
+
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('signupName').value,
+            email: document.getElementById('signupEmail').value,
+            password: password
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.msg || 'Signup failed');
+
+        localStorage.setItem('token', data.token);
+        toggleAuthForm();
+        alert('Account created successfully!');
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+      }
+    });
   
+    async function loadUserProfile() {
+      try {
+        let welcomeEl = document.getElementById('welcome-message');
+        const token = localStorage.getItem('token');
+        const assessmentBtn = document.getElementById('assessment-button');
+        if (!token) {
+          if (assessmentBtn) {
+            assessmentBtn.textContent = "Get Career Suggestions";
+            document.getElementById("assessment-button").setAttribute("onclick", "showCareerSuggestions()");
+          }
+          if (welcomeEl) {
+            welcomeEl.classList.add('d-none');
+          }
+          return;
+        }
+
+        if(token){
+          if(welcomeEl){
+            welcomeEl.classList.remove('d-none');
+          }
+        }
+
+        const response = await fetch('/api/user/profile', {
+          headers: { 'x-auth-token': token }
+        });
+        if (!response.ok) throw new Error('Failed to fetch user profile');
+        const user = await response.json();
+
+        
+        if (!welcomeEl) {
+          welcomeEl = document.createElement('h2');
+          welcomeEl.id = 'welcome-message';
+          welcomeEl.textContent = `Welcome back, ${user.name}`;
+          // Set initial opacity to ensure the animation starts
+          welcomeEl.style.opacity = 0;
+          document.getElementById('home-content').prepend(welcomeEl);
+          
+          // Force reflow to reset the animation
+          void welcomeEl.offsetWidth;
+          welcomeEl.classList.add('animate-slide-up', 'animate-fade-in');
+        } else {
+          welcomeEl.textContent = `Welcome back, ${user.name}`;
+          // Remove and re-add classes to restart animation
+          welcomeEl.classList.remove('animate-slide-up', 'animate-fade-in');
+          void welcomeEl.offsetWidth;
+          welcomeEl.classList.add('animate-slide-up', 'animate-fade-in');
+        }
+
+        if (assessmentBtn) {
+          document.getElementById("assessment-button").setAttribute("onclick", "showAptitudeTest()");
+          assessmentBtn.textContent = "Take Free Assessment";
+        }
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+
+    function isTokenValid(token) {
+      if (!token) return false;
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        return payload.exp * 1000 > Date.now();
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // Update navbar based on login status
+    function updateNavbar() {
+      const token = localStorage.getItem("token");
+      const loginBtn = document.querySelector(".btn.btn-outline-light.ms-2");
+      const userMenu = document.getElementById("userMenu");
+      if (token && isTokenValid(token)) {
+        loginBtn.classList.add("d-none");
+        userMenu.classList.remove("d-none");
+      } else {
+        loginBtn.classList.remove("d-none");
+        userMenu.classList.add("d-none");
+      }
+    }
+
+    // Run updateNavbar on DOM load
+    document.addEventListener("DOMContentLoaded", updateNavbar);
+
+    // Attach logout functionality
+    document.getElementById("logoutBtn")?.addEventListener("click", function () {
+      localStorage.removeItem("token");
+      updateNavbar();
+      loadUserProfile();
+      // Optionally, redirect to the login screen or refresh the page:
+      showHome();
+    });
+
   </script>
 
   <!-- Bootstrap Icons -->
@@ -1463,5 +1987,20 @@
     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
   </symbol>
 </svg>
+
+<script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof showdown !== "undefined") {
+      const converter = new showdown.Converter({ tables: true });
+      document.querySelectorAll(".markdown-enhanced").forEach((el) => {
+        el.innerHTML = converter.makeHtml(el.innerHTML);
+      });
+    } else {
+      console.error("Showdown not loaded.");
+    }
+  });
+</script>
+
 </body>
 </html>
