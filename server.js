@@ -1,20 +1,133 @@
+// require('dotenv').config();
+// const express = require('express');
+// const { GoogleGenerativeAI } = require('@google/generative-ai');
+// const cors = require('cors');
+// const path = require('path');
+
+// const app = express();
+// app.use(express.json());
+// app.use(cors());
+
+
+
 require('dotenv').config();
 const express = require('express');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const cors = require('cors');
 const path = require('path');
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+// const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.post('/generate-questions', async (req, res) => {
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
+
+// User Schema
+const UserSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+  testHistory: [{
+    date: Date,
+    results: Object,
+    suggestions: Array
+  }]
+});
+
+// Hash password before saving
+UserSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) return next();
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+const User = mongoose.model('User', UserSchema);
+
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+
+// Authentication Middleware
+const authMiddleware = async (req, res, next) => {
+  const token = req.header('x-auth-token');
+  if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findById(decoded.user.id).select('-password');
+    next();
+  } catch (err) {
+    res.status(401).json({ msg: 'Token is not valid' });
+  }
+};
+
+// Routes
+app.post('/api/auth/signup', async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    
+    let user = await User.findOne({ email });
+    if (user) return res.status(400).json({ msg: 'User already exists' });
+
+    user = new User({ name, email, password });
+    await user.save();
+
+    const payload = { user: { id: user.id } };
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+
+    const payload = { user: { id: user.id } };
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// Protected route example
+app.get('/api/user/profile', authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+app.post('/generate-questions', authMiddleware, async (req, res) => {
     try {
         const { currentField, interestField } = req.body;
         const prompt = `Generate 10 unique career quidance aptitude test questions tailored for a person with the following details:
@@ -43,7 +156,7 @@ app.post('/generate-questions', async (req, res) => {
     }
 });
 
-app.post('/analyze-results', async (req, res) => {
+app.post('/analyze-results', authMiddleware, async (req, res) => {
     try {
         const { results } = req.body;
         const prompt = `Based on the following aptitude test results, provide a brief career recommendation in 2-3 sentences. Focus on the most suitable career path without listing individual responses.
@@ -62,6 +175,13 @@ app.post('/analyze-results', async (req, res) => {
         const analysis = result.response.candidates[0].content.parts[0].text;
 
         res.json({ analysis });
+
+        const user = await User.findById(req.user.id);
+        user.testHistory.push({
+            date: new Date(),
+            results: req.body.results,
+        });
+        await user.save();
     } catch (error) {
         console.error('Error analyzing results:', error);
         res.status(500).json({ error: 'Failed to analyze results.' });
