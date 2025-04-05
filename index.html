@@ -1236,12 +1236,11 @@
     <!-- Form Fields -->
     <div id="aptitude-test-form">
       <div class="mb-3">
-        <label for="current-status" class="form-label">Current Status:</label>
+        <label for="current-status" class="form-label">Current Stage:</label>
         <select class="form-select" id="current-status">
-          <option value="school">School</option>
-          <option value="highschool">High School</option>
-          <option value="college">College</option>
-          <option value="job">Job</option>
+          <option value="Undergraduate">Undergraduate</option>
+          <option value="Postgraduate">Postgraduate</option>
+          <option value="Job Professional">Job Professional</option>
         </select>
       </div>
       <div class="mb-3">
@@ -1249,7 +1248,7 @@
         <input type="text" class="form-control" id="current-field" />
       </div>
       <div class="mb-3">
-        <label for="interest-field" class="form-label">Field of Interest:</label>
+        <label for="interest-field" class="form-label">Area of Interest:</label>
         <input type="text" class="form-control" id="interest-field" />
       </div>
       <div class="text-center">
@@ -1359,6 +1358,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    loadUserProfile();
     let questions = [];
     let currentQuestionIndex = 0;
     let results = {};
@@ -1461,7 +1461,7 @@
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ currentField, interestField }),
+        body: JSON.stringify({ currentStatus, currentField, interestField  }),
       });
 
       if (!response.ok) {
@@ -1972,6 +1972,7 @@
         if (!welcomeEl) {
           welcomeEl = document.createElement('h2');
           welcomeEl.id = 'welcome-message';
+          welcomeEl.style.marginBottom = '30px';
           welcomeEl.textContent = `Welcome back, ${user.name}`;
           // Set initial opacity to ensure the animation starts
           welcomeEl.style.opacity = 0;
@@ -1982,6 +1983,7 @@
           welcomeEl.classList.add('animate-slide-up', 'animate-fade-in');
         } else {
           welcomeEl.textContent = `Welcome back, ${user.name}`;
+          welcomeEl.style.marginBottom = '30px';
           // Remove and re-add classes to restart animation
           welcomeEl.classList.remove('animate-slide-up', 'animate-fade-in');
           void welcomeEl.offsetWidth;
