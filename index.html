@@ -917,49 +917,40 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-xl">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
+    <div class="container-fluid">
       <a class="navbar-brand" onclick="showHome()">CareerPath</a>
-      <div class="d-flex align-items-center">
-        <!-- Collapsible nav links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" onclick="showHome()">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Our Story</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Get Guidance
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href="#" id="aptitudeTestBtn">Aptitude Test</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" onclick="showCareerSuggestions()">Career Suggestions</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="showAboutUs()">About Us</a>
-            </li>
-          </ul>
-        </div>
-        <!-- Toggler and login button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="btn btn-outline-light ms-2" onclick="showAuth()">Login</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" onclick="showHome()">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Our Story</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              Get Guidance
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="#" id="aptitudeTestBtn">Aptitude Test</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="showCareerSuggestions()">Career Suggestions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="showAboutUs()">About Us</a>
+          </li>
+        </ul>
+      </div>
+        <a class="btn btn-outline-light ms-2" onclick="showAuth()" id="loginBtn">Login</a>
         <div class="dropdown d-none" id="userMenu">
           <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userIcon" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User" width="32" height="32" class="rounded-circle">
@@ -968,9 +959,9 @@
             <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
           </ul>
         </div>
-      </div>
     </div>
   </nav>
+  
   
   
   <!--<nav class="navbar">
