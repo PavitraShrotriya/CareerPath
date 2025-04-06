@@ -1,361 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CareerPath - Your Career Guidance</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <style>
-
-    /* Professional Animations */
-    .animate-fade-in {
-      opacity: 0;
-      animation: fadeIn 0.8s ease-out forwards;
-    }
-
-    .animate-slide-up {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideUp 0.6s ease-out forwards;
-    }
-
-    .delay-1 { animation-delay: 0.2s; }
-    .delay-2 { animation-delay: 0.4s; }
-    .delay-3 { animation-delay: 0.6s; }
-    .delay-4 { animation-delay: 0.8s; }
-    .delay-5 { animation-delay: 1.0s; }
-    .delay-6 { animation-delay: 1.2s; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerPath - Your Career Guidance</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Professional Animations */
+      .animate-fade-in {
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out forwards;
       }
-    }
 
-    /* Hover Effects */
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 8px;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    }
-
-    /* Bootstrap Icon Fallback */
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
-
-    /* Home Page Animations */
-    .hero-text {
-      background: linear-gradient(45deg, #6a11cb, #2575fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 20px 0;
-    }
-
-    .btn-glow {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      transform-style: preserve-3d;
-    }
-
-    .btn-glow:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
-    }
-
-    .btn-glow::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, 
-        transparent 25%,
-        rgba(255,255,255,0.2) 50%,
-        transparent 75%);
-      animation: shine 3s infinite;
-    }
-
-    @keyframes shine {
-      100% {
-        transform: translate(100%, 100%) rotate(45deg);
-      }
-    }
-
-    .feature-card .card {
-      border: none;
-      border-radius: 15px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(10px);
-    }
-
-    .feature-card:hover .card {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-
-    .feature-icon {
-      font-size: 2.5rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .stats-section {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 15px;
-      min-width: 150px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
-
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #2c3e50;
-      line-height: 1;
-    }
-
-    .stat-label {
-      color: #7f8c8d;
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Entrance Animations */
-    .animate__animated {
-      opacity: 0;
-      animation-duration: 1s;
-      animation-fill-mode: both;
-    }
-
-    @keyframes fadeInUp {
-      from {
+      .animate-slide-up {
         opacity: 0;
         transform: translateY(20px);
+        animation: slideUp 0.6s ease-out forwards;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .delay-1 {
+        animation-delay: 0.2s;
       }
-    }
-
-    .features-row .card { animation-delay: 0.3s; }
-    .stats-section { animation-delay: 0.6s; }
-
-    /* Home Page Animations */
-    .main-content#home-content {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Animated Background Elements */
-    .main-content#home-content::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, 
-        transparent 45%,
-        rgba(52, 152, 219, 0.05) 50%,
-        transparent 55%);
-      animation: lightFlow 12s infinite linear;
-      z-index: -1;
-    }
-
-    @keyframes lightFlow {
-      0% { transform: translate(-30%, -30%) rotate(45deg); }
-      100% { transform: translate(30%, 30%) rotate(45deg); }
-    }
-
-    /* Text Entrance Animations */
-    #home-content h1 {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.8s ease-out forwards;
-      animation-delay: 0.3s;
-    }
-
-    #home-content p {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s ease-out forwards;
-      animation-delay: 0.6s;
-    }
-
-    #home-content .btn {
-      opacity: 0;
-      transform: scale(0.9);
-      animation: fadeInScale 0.8s ease-out forwards;
-      animation-delay: 1s;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .delay-2 {
+        animation-delay: 0.4s;
       }
-    }
-
-    @keyframes fadeInScale {
-      to {
-        opacity: 1;
-        transform: scale(1);
+      .delay-3 {
+        animation-delay: 0.6s;
       }
-    }
-
-    /* Hover Effects */
-    .navbar-brand {
-      transition: transform 0.3s ease;
-    }
-
-    .navbar-brand:hover {
-      transform: rotate(-5deg) scale(1.1);
-    }
-
-    #home-content .btn {
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #home-content .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
-    }
-
-    #home-content .btn::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: rgba(255, 255, 255, 0.1);
-      transform: rotate(45deg);
-      transition: all 0.5s ease;
-    }
-
-    #home-content .btn:hover::after {
-      left: 120%;
-    }
-
-    /* Floating Animation */
-    @keyframes floating {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    #home-content h1 {
-      animation: 
-        fadeInUp 0.8s ease-out forwards;
-        /* floating 6s ease-in-out infinite; */
-      animation-delay: 0.3s, 1.5s;
-    }
-
-    /* About us - Animated Background Effects */
-    #about-us-content {
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    #about-us-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 30% 70%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 30%, rgba(241, 196, 15, 0.1) 0%, transparent 50%);
-      /* animation: particleFlow 20s linear infinite; */
-      z-index: -1;
-    }
-
-    /* @keyframes particleFlow {
-      0% {
-        background-position: 0% 0%, 100% 100%;
+      .delay-4 {
+        animation-delay: 0.8s;
       }
-      50% {
-        background-position: 100% 100%, 0% 0%;
+      .delay-5 {
+        animation-delay: 1s;
       }
-      100% {
-        background-position: 0% 0%, 100% 100%;
+      .delay-6 {
+        animation-delay: 1.2s;
       }
-    } */
 
-    #about-us-content::after {
-      content: '';
-      position: absolute;
-      /* top: -50%; */
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, 
-        transparent 45%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 55%);
-      /* animation: lightStreak 8s infinite linear; */
-      z-index: -1;
-    }
-
-    /* @keyframes lightStreak {
-      0% {
-        transform: translate(-50%, -50%) rotate(45deg);
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
       }
-      100% {
-        transform: translate(50%, 50%) rotate(45deg);
-      }
-    } */
 
-    /* Floating animation for content */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
+      @keyframes slideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      50% {
-        transform: translateY(-20px);
+
+      /* Hover Effects */
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 8px;
       }
-    }
 
-    /* Add transition to list items */
-    /* #about-us-content li {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    } */
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      }
 
-    #about-us-content {
+      /* Bootstrap Icon Fallback */
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      /* Home Page Animations */
+      .hero-text {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 20px 0;
+      }
+
+      .btn-glow {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        transform-style: preserve-3d;
+      }
+
+      .btn-glow:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+      }
+
+      .btn-glow::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 25%,
+          rgba(255, 255, 255, 0.2) 50%,
+          transparent 75%
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        100% {
+          transform: translate(100%, 100%) rotate(45deg);
+        }
+      }
+
+      .feature-card .card {
+        border: none;
+        border-radius: 15px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+      }
+
+      .feature-card:hover .card {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .stats-section {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 40px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        min-width: 150px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .stat-number {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #2c3e50;
+        line-height: 1;
+      }
+
+      .stat-label {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        margin-top: 5px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Entrance Animations */
+      .animate__animated {
+        opacity: 0;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .features-row .card {
+        animation-delay: 0.3s;
+      }
+      .stats-section {
+        animation-delay: 0.6s;
+      }
+
+      /* Home Page Animations */
+      .main-content#home-content {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Animated Background Elements */
+      .main-content#home-content::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 45%,
+          rgba(52, 152, 219, 0.05) 50%,
+          transparent 55%
+        );
+        animation: lightFlow 12s infinite linear;
+        z-index: -1;
+      }
+
+      @keyframes lightFlow {
+        0% {
+          transform: translate(-30%, -30%) rotate(45deg);
+        }
+        100% {
+          transform: translate(30%, 30%) rotate(45deg);
+        }
+      }
+
+      /* Text Entrance Animations */
+      #home-content h1 {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: 0.3s;
+      }
+
+      #home-content p {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: 0.6s;
+      }
+
+      #home-content .btn {
+        opacity: 0;
+        transform: scale(0.9);
+        animation: fadeInScale 0.8s ease-out forwards;
+        animation-delay: 1s;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInScale {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Hover Effects */
+      .navbar-brand {
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-brand:hover {
+        transform: rotate(-5deg) scale(1.1);
+      }
+
+      #home-content .btn {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #home-content .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+      }
+
+      #home-content .btn::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: rotate(45deg);
+        transition: all 0.5s ease;
+      }
+
+      #home-content .btn:hover::after {
+        left: 120%;
+      }
+
+      /* Floating Animation */
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      #home-content h1 {
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: 0.3s, 1.5s;
+      }
+
+      /* About us - Animated Background Effects */
+      #about-us-content {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      #about-us-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 30% 70%,
+            rgba(52, 152, 219, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 30%,
+            rgba(241, 196, 15, 0.1) 0%,
+            transparent 50%
+          );
+        z-index: -1;
+      }
+
+      #about-us-content::after {
+        content: "";
+        position: absolute;
+        /* top: -50%; */
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 45%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 55%
+        );
+        z-index: -1;
+      }
+
+      /* Floating animation for content */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      #about-us-content {
         background: linear-gradient(135deg, #ffffff, #f8f9fa);
         border-radius: 15px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
@@ -380,7 +395,7 @@
       }
 
       #about-us-content h1::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -10px;
         left: 50%;
@@ -416,7 +431,7 @@
       }
 
       #about-us-content li::before {
-        content: '✓';
+        content: "✓";
         color: #3498db;
         font-weight: bold;
         margin-right: 15px;
@@ -445,7 +460,7 @@
       }
 
       .btn-about::after {
-        content: '';
+        content: "";
         position: absolute;
         top: -50%;
         left: -50%;
@@ -460,725 +475,760 @@
         left: 120%;
       }
 
-    /* Global styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-      min-height: 100vh;
-      padding-top: 70px; /* Avoid content under fixed navbar */
-    }
-
-    /* Navbar styling */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #343a40;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar-brand,
-    .nav-link {
-      color: white !important;
-      transition: color 0.3s ease;
-      cursor: pointer;
-    }
-
-    .navbar-brand:hover,
-    .nav-link:hover {
-      color: #ddd !important;
-    }
-
-    /* Home content styling */
-    .main-content {
-      padding: 50px;
-      text-align: center;
-    }
-
-    .main-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .main-content p {
-      font-size: 1.2rem;
-      color: #555;
-    }
-
-    /* Aptitude Test container improvements */
-    #aptitude-test-container {
-      display: none;
-      max-width: 700px;
-      margin: 20px auto;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-
-    /* Header Banner */
-    #aptitude-test-container header {
-      background-color: #343a40;
-      color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 1.5rem;
-    }
-
-    /* Form and Questions Styling */
-    #aptitude-test-form,
-    #question-container {
-      padding: 30px;
-    }
-
-    .form-label {
-      font-weight: 600;
-    }
-
-    .form-select,
-    .form-control {
-      border-radius: 5px;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .form-select:focus,
-    .form-control:focus {
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-
-    /* Question container enhancements */
-    #question-container {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
+      /* Global styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        min-height: 100vh;
+        padding-top: 70px;
       }
-      to {
-        opacity: 1;
+
+      /* Navbar styling */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #343a40;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
-    }
 
-    #aptitude-test-questions p {
-      font-size: 1.25rem;
-      margin-bottom: 15px;
-    }
+      .navbar-brand,
+      .nav-link {
+        color: white !important;
+        transition: color 0.3s ease;
+        cursor: pointer;
+      }
 
-    .form-check {
-      margin-bottom: 10px;
-    }
+      .navbar-brand:hover,
+      .nav-link:hover {
+        color: #ddd !important;
+      }
 
-    /* Button styling */
-    button.btn {
-      border-radius: 50px;
-      padding: 10px 25px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
+      /* Home content styling */
+      .main-content {
+        padding: 50px;
+        text-align: center;
+      }
 
-    button.btn:hover {
-      transform: scale(1.03);
-    }
+      .main-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
 
-    /* Progress Bar container */
-    #quiz-progress {
-      margin-bottom: 20px;
-    }
+      .main-content p {
+        font-size: 1.2rem;
+        color: #555;
+      }
 
-    .progress {
-      height: 20px;
-      background-color: #e9ecef;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+      /* Aptitude Test container improvements */
+      #aptitude-test-container {
+        display: none;
+        max-width: 700px;
+        margin: 20px auto;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
 
-    .progress-bar {
-      background-color: #3498db;
-      transition: width 0.6s ease;
-    }
+      /* Header Banner */
+      #aptitude-test-container header {
+        background-color: #343a40;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        font-size: 1.5rem;
+      }
 
-    .progress-bar-striped {
-      background-image: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.15) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.15) 50%,
-        rgba(255, 255, 255, 0.15) 75%,
-        transparent 75%,
-        transparent
-      );
-      background-size: 1rem 1rem;
-    }
+      /* Form and Questions Styling */
+      #aptitude-test-form,
+      #question-container {
+        padding: 30px;
+      }
 
-    .progress-bar-animated {
-      animation: progress-bar-stripes 1s linear infinite;
-    }
+      .form-label {
+        font-weight: 600;
+      }
 
-    @keyframes progress-bar-stripes {
-      0% { background-position: 1rem 0; }
-      100% { background-position: 0 0; }
-    }
+      .form-select,
+      .form-control {
+        border-radius: 5px;
+        transition: box-shadow 0.3s ease;
+      }
 
-    /* Final results styling */
-    #final-results {
-      display: none;
-      padding: 20px;
-      text-align: center;
-    }
+      .form-select:focus,
+      .form-control:focus {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
 
-    #final-results h3 {
-      margin-bottom: 20px;
-    }
+      /* Question container enhancements */
+      #question-container {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
 
-    #career-suggestions-container {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      padding: 2rem;
-      margin: 20px auto;
-      max-width: 800px;
-    }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
 
-    .career-form {
-      background: #f8f9fa;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-    }
+      #aptitude-test-questions p {
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+      }
 
-    #career-results .card {
-      border-left: 4px solid #3498db;
-      transition: transform 0.2s;
-    }
+      .form-check {
+        margin-bottom: 10px;
+      }
 
-    #career-results .card:hover {
-      transform: translateX(10px);
-    }
+      /* Button styling */
+      button.btn {
+        border-radius: 50px;
+        padding: 10px 25px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
 
-    /* Career Suggestions Animations */
-    #career-suggestions-container {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #ffffff, #f8f9fa);
-    }
+      button.btn:hover {
+        transform: scale(1.03);
+      }
 
-    #career-suggestions-container::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(52, 152, 219, 0.05) 0%,
-        rgba(52, 152, 219, 0.05) 5%,
-        transparent 5%,
-        transparent 10%
-      );
-      animation: careerFlow 20s linear infinite;
-      z-index: 0;
-    }
+      /* Progress Bar container */
+      #quiz-progress {
+        margin-bottom: 20px;
+      }
 
-    @keyframes careerFlow {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(100px, 100px); }
-    }
+      .progress {
+        height: 20px;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+      }
 
-    .career-form {
-      position: relative;
-      z-index: 1;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(5px);
-      transition: all 0.4s ease;
-    }
+      .progress-bar {
+        background-color: #3498db;
+        transition: width 0.6s ease;
+      }
 
-    .career-form input,
-    .career-form textarea,
-    .career-form select {
-      transition: all 0.3s ease;
-      transform: translateY(0);
-    }
+      .progress-bar-striped {
+        background-image: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.15) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.15) 50%,
+          rgba(255, 255, 255, 0.15) 75%,
+          transparent 75%,
+          transparent
+        );
+        background-size: 1rem 1rem;
+      }
 
-    .career-form input:focus,
-    .career-form textarea:focus,
-    .career-form select:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
-    }
+      .progress-bar-animated {
+        animation: progress-bar-stripes 1s linear infinite;
+      }
 
-    .career-card {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: cardEntry 0.6s ease forwards;
-    }
+      @keyframes progress-bar-stripes {
+        0% {
+          background-position: 1rem 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
 
-    @keyframes cardEntry {
-      to {
-        opacity: 1;
+      /* Final results styling */
+      #final-results {
+        display: none;
+        padding: 20px;
+        text-align: center;
+      }
+
+      #final-results h3 {
+        margin-bottom: 20px;
+      }
+
+      #career-suggestions-container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin: 20px auto;
+        max-width: 800px;
+      }
+
+      .career-form {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      #career-results .card {
+        border-left: 4px solid #3498db;
+        transition: transform 0.2s;
+      }
+
+      #career-results .card:hover {
+        transform: translateX(10px);
+      }
+
+      /* Career Suggestions Animations */
+      #career-suggestions-container {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      }
+
+      #career-suggestions-container::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: repeating-linear-gradient(
+          45deg,
+          rgba(52, 152, 219, 0.05) 0%,
+          rgba(52, 152, 219, 0.05) 5%,
+          transparent 5%,
+          transparent 10%
+        );
+        animation: careerFlow 20s linear infinite;
+        z-index: 0;
+      }
+
+      @keyframes careerFlow {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(100px, 100px);
+        }
+      }
+
+      .career-form {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+        transition: all 0.4s ease;
+      }
+
+      .career-form input,
+      .career-form textarea,
+      .career-form select {
+        transition: all 0.3s ease;
         transform: translateY(0);
       }
-    }
 
-    .career-card:nth-child(1) { animation-delay: 0.2s; }
-    .career-card:nth-child(2) { animation-delay: 0.4s; }
-    .career-card:nth-child(3) { animation-delay: 0.6s; }
-    .career-card:nth-child(4) { animation-delay: 0.8s; }
-    .career-card:nth-child(5) { animation-delay: 1.0s; }
-
-    /* .progress-bar {
-      height: 8px;
-      border-radius: 4px;
-      background: #e0e0e0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #3498db, #3b89ff);
-      width: 0;
-      transition: width 1s ease-in-out;
-    } */
-
-    .skill-pill {
-      background: rgba(52, 152, 219, 0.1);
-      color: #2c3e50;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin: 4px;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-
-    .skill-pill:hover {
-      transform: translateY(-2px);
-      background: rgba(52, 152, 219, 0.2);
-    }
-
-    .btn-outline-primary {
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-outline-primary:hover {
-      transform: translateX(10px);
-    }
-
-    .btn-outline-primary::after {
-      content: '→';
-      position: absolute;
-      right: -20px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-outline-primary:hover::after {
-      right: 15px;
-    }
-
-    /* Login Styles */
-    /* .login-card {
-      background: rgba(255, 255, 255, 0.95);
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(10px);
-      transform: translateY(20px);
-      opacity: 0;
-      animation: slideUpFadeIn 0.6s ease forwards;
-    }
-
-    .login-card input {
-      border-radius: 8px;
-      padding: 12px 20px;
-      transition: all 0.3s ease;
-    }
-
-    .login-card input:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
-    }
-
-    .login-card .btn-primary {
-      border-radius: 8px;
-      padding: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .login-card .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
-    }
-
-    #signup-content .form-control {
-      margin-bottom: 1rem;
-    }
-
-    #signup-content h2 {
-      margin-bottom: 2rem;
-    }
-    
-    #loginForm, #signupForm {
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    } */
-
-    .toggle-text {
-      transition: all 0.3s ease;
-    }
-
-    .toggle-text a {
-      transition: color 0.2s ease;
-    }
-
-    .toggle-text a:hover {
-      color: #0d6efd !important;
-    }
-
-    .btn.btn-outline-light {
-      color: white;
-      border-color: white;
-    }
-    
-
-    .btn.btn-outline-light {
-      background-color: #0d6efd;
-      border-color: #0d6efd;
-      color: white;
-    }
-
-    /* Auth Card Styling */
-    .auth-card {
-      border: none;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      padding: 2rem; /* Add padding to the card */
-    }
-
-    .auth-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Responsive adjustments for auth forms */
-    @media (max-width: 576px) {
-      .auth-card {
-        margin: 1rem;
-        padding: 1.5rem;
+      .career-form input:focus,
+      .career-form textarea:focus,
+      .career-form select:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
       }
-    }
 
-    .auth-card .form-control {
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1rem;
-      transition: all 0.3s ease;
-    }
+      .career-card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: cardEntry 0.6s ease forwards;
+      }
 
-    .auth-card .form-control:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+      @keyframes cardEntry {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-    .auth-card .btn-primary {
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
+      .career-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .career-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .career-card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .career-card:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      .career-card:nth-child(5) {
+        animation-delay: 1s;
+      }
 
-    .auth-card .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    }
+      .skill-pill {
+        background: rgba(52, 152, 219, 0.1);
+        color: #2c3e50;
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin: 4px;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
 
-    .auth-card .toggle-text {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #6c757d;
-    }
+      .skill-pill:hover {
+        transform: translateY(-2px);
+        background: rgba(52, 152, 219, 0.2);
+      }
 
-    .auth-card .toggle-text a {
-      color: #0d6efd;
-      text-decoration: none;
-    }
+      .btn-outline-primary {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
 
-    .auth-card .toggle-text a:hover {
-      text-decoration: underline;
-    }
+      .btn-outline-primary:hover {
+        transform: translateX(10px);
+      }
 
-    /* Floating Chat Widget Styles */ 
-    #chatbot-toggle { 
-      position: fixed; 
-      bottom: 20px; 
-      right: 20px; 
-      background: #3498db; 
-      color: white; 
-      width: 60px; 
-      height: 60px; 
-      border-radius: 50%; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      cursor: pointer; 
-      z-index: 10000; 
-    } 
-      
-    #chatbot-window { 
-      position: fixed; 
-      bottom: 90px; 
-      right: 20px; 
-      width: 300px; 
-      max-height: 400px; 
-      background: #fff; 
-      border: 1px solid #ccc; 
-      border-radius: 8px; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
-      display: none; flex-direction: column; 
-      z-index: 10000; 
-    } 
-    
-    #chatbot-header { 
-      background: #3498db; 
-      color: white; 
-      padding: 10px; 
-      border-top-left-radius: 8px; 
-      border-top-right-radius: 8px; 
-      font-weight: bold; 
-    } 
-    
-    #chatbot-messages { 
-      padding: 10px; 
-      overflow-y: auto; 
-      flex-grow: 1; 
-      font-size: 0.9rem; 
-    } 
-    
-    #chatbot-input-container { 
-      padding: 10px; 
-      border-top: 1px solid #ccc; 
-    } 
-    
-    #chatbot-input { 
-      width: 100%; 
-      padding: 8px; 
-      border: 1px solid #ccc; 
-      border-radius: 4px; 
-    }
+      .btn-outline-primary::after {
+        content: "→";
+        position: absolute;
+        right: -20px;
+        transition: all 0.3s ease;
+      }
 
-  </style>
-</head>
-<body>
-  <nav class="navbar navbar-expand-xl">
-    <div class="container-fluid">
-      <a class="navbar-brand" onclick="showHome()">CareerPath</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" onclick="showHome()">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Our Story</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
-              Get Guidance
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <a class="dropdown-item" href="#" id="aptitudeTestBtn">Aptitude Test</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#" onclick="showCareerSuggestions()">Career Suggestions</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" onclick="showAboutUs()">About Us</a>
-          </li>
-        </ul>
-      </div>
-        <a class="btn btn-outline-light ms-2" onclick="showAuth()" id="loginBtn">Login</a>
+      .btn-outline-primary:hover::after {
+        right: 15px;
+      }
+
+      .toggle-text {
+        transition: all 0.3s ease;
+      }
+
+      .toggle-text a {
+        transition: color 0.2s ease;
+      }
+
+      .toggle-text a:hover {
+        color: #0d6efd !important;
+      }
+
+      .btn.btn-outline-light {
+        color: white;
+        border-color: white;
+      }
+
+      .btn.btn-outline-light {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: white;
+      }
+
+      /* Auth Card Styling */
+      .auth-card {
+        border: none;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* padding: 2rem; */
+      }
+
+      .auth-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Responsive adjustments for auth forms */
+      @media (max-width: 576px) {
+        .auth-card {
+          margin:0 ;
+          padding: 0;
+        }
+
+        #auth-content{
+          padding: 5%;
+        }
+
+        .p-5{
+          padding: 1rem;
+        }
+      }
+
+      .auth-card .form-control {
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .auth-card .form-control:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .auth-card .btn-primary {
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .auth-card .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .auth-card .toggle-text {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+
+      .auth-card .toggle-text a {
+        color: #0d6efd;
+        text-decoration: none;
+      }
+
+      .auth-card .toggle-text a:hover {
+        text-decoration: underline;
+      }
+
+      /* Floating Chat Widget Styles */
+      #chatbot-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #3498db;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10000;
+      }
+
+      #chatbot-window {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 300px;
+        max-height: 400px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        display: none;
+        flex-direction: column;
+        z-index: 10000;
+      }
+
+      #chatbot-header {
+        background: #3498db;
+        color: white;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        font-weight: bold;
+      }
+
+      #chatbot-messages {
+        padding: 10px;
+        overflow-y: auto;
+        flex-grow: 1;
+        font-size: 0.9rem;
+      }
+
+      #chatbot-input-container {
+        padding: 10px;
+        border-top: 1px solid #ccc;
+      }
+
+      #chatbot-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-xl">
+      <div class="container-fluid">
+        <a class="navbar-brand" onclick="showHome()">CareerPath</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" onclick="showHome()">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Our Story</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Get Guidance
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#" id="aptitudeTestBtn"
+                    >Aptitude Test</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="showCareerSuggestions()"
+                    >Career Suggestions</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="showAboutUs()">About Us</a>
+            </li>
+          </ul>
+        </div>
+        <a class="btn btn-outline-light ms-2" onclick="showAuth()" id="loginBtn"
+          >Login</a
+        >
         <div class="dropdown d-none" id="userMenu">
-          <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userIcon" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User" width="32" height="32" class="rounded-circle">
+          <a
+            href="#"
+            class="d-flex align-items-center text-decoration-none dropdown-toggle"
+            id="userIcon"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+              alt="User"
+              width="32"
+              height="32"
+              class="rounded-circle"
+            />
           </a>
-          <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="userIcon">
+          <ul
+            class="dropdown-menu dropdown-menu-end text-small shadow"
+            aria-labelledby="userIcon"
+          >
             <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
           </ul>
         </div>
-    </div>
-  </nav>
-  
-  
-  
-  <!--<nav class="navbar">
-    <div class="container-fluid">
-    Clicking the logo brings you back home
-      <a class="navbar-brand" onclick="showHome()">CareerPath</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          Clicking Home resets the UI
-          <li class="nav-item">
-            <a class="nav-link" onclick="showHome()">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Our Story</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Get Guidance
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  onclick="showAptitudeTest()"
-                  >Aptitude Test</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showAboutUs()">About Us</a>
-          </li>
-        </ul>
       </div>
-    </div>
-  </nav>-->
+    </nav>
 
-  <!-- Home content -->
-  <div class="main-content container" id="home-content">
-    <div class="text-center">
-      <h1 class="display-5 fw-bold mb-4 animate-fade-in">Find Your Ideal Career Path</h1>
-      <p class="lead mb-4 animate-fade-in delay-1">Strategic Career Planning for All Stages</p>
-      
-      <div class="col-lg-8 mx-auto">
-        <p class="mb-4 animate-fade-in delay-2">Discover opportunities aligned with your skills and aspirations through our intelligent career assessment system.</p>
-      </div>
-  
-      <button id="assessment-button" class="btn btn-primary btn-lg px-5 animate-fade-in delay-3" onclick="showCareerSuggestions()">
-        Get Career Suggestions
-      </button>      
-  
-      <!-- Value Proposition Section -->
-      <div class="row mt-5 g-4">
-        <div class="col-md-4 animate-slide-up delay-4 animate-fade-in">
-          <div class="p-4 card-hover">
-            <div class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px;">
-              <svg class="bi" width="30" height="30" fill="currentColor" style="margin: 15px;">
-                <use xlink:href="#speedometer2"/>
-              </svg>
-            </div>
-            <h3>Quick Analysis</h3>
-            <p>15-minute comprehensive career evaluation</p>
-          </div>
+    <!-- Home content -->
+    <div class="main-content container" id="home-content">
+      <div class="text-center">
+        <h1 class="display-5 fw-bold mb-4 animate-fade-in">
+          Find Your Ideal Career Path
+        </h1>
+        <p class="lead mb-4 animate-fade-in delay-1">
+          Strategic Career Planning for All Stages
+        </p>
+
+        <div class="col-lg-8 mx-auto">
+          <p class="mb-4 animate-fade-in delay-2">
+            Discover opportunities aligned with your skills and aspirations
+            through our intelligent career assessment system.
+          </p>
         </div>
-  
-        <div class="col-md-4 animate-slide-up delay-5 animate-fade-in">
-          <div class="p-4 card-hover">
-            <div class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px;">
-              <svg class="bi" width="30" height="30" fill="currentColor" style="margin: 15px;">
-                <use xlink:href="#graph-up"/>
-              </svg>
+
+        <button
+          id="assessment-button"
+          class="btn btn-primary btn-lg px-5 animate-fade-in delay-3"
+          onclick="showCareerSuggestions()"
+        >
+          Get Career Suggestions
+        </button>
+
+        <!-- Value Proposition Section -->
+        <div class="row mt-5 g-4">
+          <div class="col-md-4 animate-slide-up delay-4 animate-fade-in">
+            <div class="p-4 card-hover">
+              <div
+                class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto"
+                style="width: 60px; height: 60px"
+              >
+                <svg
+                  class="bi"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  style="margin: 15px"
+                >
+                  <use xlink:href="#speedometer2" />
+                </svg>
+              </div>
+              <h3>Quick Analysis</h3>
+              <p>15-minute comprehensive career evaluation</p>
             </div>
-            <h3>Growth Metrics</h3>
-            <p>Industry-aligned career progression maps</p>
           </div>
-        </div>
-  
-        <div class="col-md-4 animate-slide-up delay-6 animate-fade-in">
-          <div class="p-4 card-hover">
-            <div class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px;">
-              <svg class="bi" width="30" height="30" fill="currentColor" style="margin: 15px;">
-                <use xlink:href="#people-circle"/>
-              </svg>
+
+          <div class="col-md-4 animate-slide-up delay-5 animate-fade-in">
+            <div class="p-4 card-hover">
+              <div
+                class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto"
+                style="width: 60px; height: 60px"
+              >
+                <svg
+                  class="bi"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  style="margin: 15px"
+                >
+                  <use xlink:href="#graph-up" />
+                </svg>
+              </div>
+              <h3>Growth Metrics</h3>
+              <p>Industry-aligned career progression maps</p>
             </div>
-            <h3>Expert Support</h3>
-            <p>Connect with career specialists</p>
+          </div>
+
+          <div class="col-md-4 animate-slide-up delay-6 animate-fade-in">
+            <div class="p-4 card-hover">
+              <div
+                class="icon-square bg-primary text-white rounded-circle mb-3 mx-auto"
+                style="width: 60px; height: 60px"
+              >
+                <svg
+                  class="bi"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  style="margin: 15px"
+                >
+                  <use xlink:href="#people-circle" />
+                </svg>
+              </div>
+              <h3>Expert Support</h3>
+              <p>Connect with career specialists</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
     <!-- Combined Auth Content -->
-    <div class="main-content container" id="auth-content" style="display: none;">
-      <div class="row justify-content-center">
+    <div class="main-content container" id="auth-content" style="display: none">
+      <div class="row justify-content-center" id="inner-auth-content">
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
           <div class="card auth-card shadow-lg">
             <div class="card-body p-5">
               <!-- Login Form -->
-              <form id="loginForm" style="display: block;">
+              <form id="loginForm" style="display: block">
                 <h2 class="card-title text-center mb-4">Welcome Back</h2>
                 <div class="mb-3">
-                  <label for="loginEmail" class="form-label">Email address</label>
-                  <input type="email" class="form-control form-control-lg" id="loginEmail" required>
+                  <label for="loginEmail" class="form-label"
+                    >Email address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control form-control-lg"
+                    id="loginEmail"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
                   <label for="loginPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control form-control-lg" id="loginPassword" required>
+                  <input
+                    type="password"
+                    class="form-control form-control-lg"
+                    id="loginPassword"
+                    required
+                  />
                 </div>
-                <button type="submit" class="btn btn-primary w-100 btn-lg">Sign In</button>
+                <button type="submit" class="btn btn-primary w-100 btn-lg">
+                  Sign In
+                </button>
               </form>
-    
+
               <!-- Signup Form -->
-              <form id="signupForm" style="display: none;">
+              <form id="signupForm" style="display: none">
                 <h2 class="card-title text-center mb-4">Create Account</h2>
                 <div class="mb-3">
                   <label for="signupName" class="form-label">Full Name</label>
-                  <input type="text" class="form-control form-control-lg" id="signupName" pattern="[A-Za-z].*" title="Name must start with an alphabet" required>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="signupName"
+                    pattern="[A-Za-z].*"
+                    title="Name must start with an alphabet"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
-                  <label for="signupEmail" class="form-label">Email address</label>
-                  <input type="email" class="form-control form-control-lg" id="signupEmail" required>
+                  <label for="signupEmail" class="form-label"
+                    >Email address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control form-control-lg"
+                    id="signupEmail"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
-                  <label for="signupPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control form-control-lg" id="signupPassword" minlength="6" required>
+                  <label for="signupPassword" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control form-control-lg"
+                    id="signupPassword"
+                    minlength="6"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
-                  <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
-                  <input type="password" class="form-control form-control-lg" id="signupConfirmPassword" minlength="6" required>
+                  <label for="signupConfirmPassword" class="form-label"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control form-control-lg"
+                    id="signupConfirmPassword"
+                    minlength="6"
+                    required
+                  />
                 </div>
-                <button type="submit" class="btn btn-primary w-100 btn-lg">Create Account</button>
+                <button type="submit" class="btn btn-primary w-100 btn-lg">
+                  Create Account
+                </button>
               </form>
-    
+
               <!-- Toggle Links -->
               <div class="text-center mt-4">
                 <p class="toggle-text">
                   <span id="loginToggleText">Don't have an account? </span>
-                  <a href="#" onclick="toggleAuthForm()" class="text-decoration-none" id="authToggleLink">Sign up</a>
+                  <a
+                    href="#"
+                    onclick="toggleAuthForm()"
+                    class="text-decoration-none"
+                    id="authToggleLink"
+                    >Sign up</a
+                  >
                 </p>
               </div>
             </div>
@@ -1186,510 +1236,570 @@
         </div>
       </div>
     </div>
-    
-  
-    <!-- Animated Stats Section
-    <div class="stats-section mt-5 animate__animated">
-      <div class="stat-item">
-        <div class="stat-number">500K+</div>
-        <div class="stat-label">Careers Explored</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">95%</div>
-        <div class="stat-label">User Satisfaction</div>
-      </div>
-    </div>
-  </div> -->
 
-  <!-- About Us Content -->
-  <div class="main-content container" id="about-us-content" style="display: none;">
-    <h1>About CareerPath</h1>
-    <p class="lead">Embarking on a career journey? We're here to light your path! 🌟</p>
-    
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <p>At CareerPath, we believe everyone deserves personalized career guidance regardless of age or current stage in life. Our innovative platform combines AI-powered insights with human expertise to help you navigate your professional journey.</p>
-  
-        <div class="feature-list">
-          <h4 class="text-center mb-4">We Specialize In:</h4>
-          <ul class="text-start">
-            <li>Student career discovery programs</li>
-            <li>College major selection guidance</li>
-            <li>Professional skill development</li>
-            <li>Mid-career transition support</li>
-          </ul>
+    <!-- About Us Content -->
+    <div
+      class="main-content container"
+      id="about-us-content"
+      style="display: none"
+    >
+      <h1>About CareerPath</h1>
+      <p class="lead">
+        Embarking on a career journey? We're here to light your path! 🌟
+      </p>
+
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <p>
+            At CareerPath, we believe everyone deserves personalized career
+            guidance regardless of age or current stage in life. Our innovative
+            platform combines AI-powered insights with human expertise to help
+            you navigate your professional journey.
+          </p>
+
+          <div class="feature-list">
+            <h4 class="text-center mb-4">We Specialize In:</h4>
+            <ul class="text-start">
+              <li>Student career discovery programs</li>
+              <li>College major selection guidance</li>
+              <li>Professional skill development</li>
+              <li>Mid-career transition support</li>
+            </ul>
+          </div>
+
+          <p class="text-center mt-4">
+            💡 Our dynamic assessments adapt to your unique situation, providing
+            tailored recommendations whether you're just starting out or looking
+            to make a change.
+          </p>
         </div>
-  
-        <p class="text-center mt-4">💡 Our dynamic assessments adapt to your unique situation, providing tailored recommendations whether you're just starting out or looking to make a change.</p>
+      </div>
+
+      <button class="btn btn-about text-white mt-4" onclick="showHome()">
+        ← Back to Home
+      </button>
+    </div>
+
+    <!-- Aptitude Test Container with Header -->
+    <div id="aptitude-test-container">
+      <header>Aptitude Test</header>
+
+      <!-- Form Fields -->
+      <div id="aptitude-test-form">
+        <div class="mb-3">
+          <label for="current-status" class="form-label">Current Stage:</label>
+          <select class="form-select" id="current-status">
+            <option value="Undergraduate">Undergraduate</option>
+            <option value="Postgraduate">Postgraduate</option>
+            <option value="Job Professional">Job Professional</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="current-field" class="form-label">Current Field:</label>
+          <input type="text" class="form-control" id="current-field" />
+        </div>
+        <div class="mb-3">
+          <label for="interest-field" class="form-label"
+            >Area of Interest:</label
+          >
+          <input type="text" class="form-control" id="interest-field" />
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary" onclick="startQuiz()">
+            Start Quiz
+          </button>
+        </div>
+      </div>
+
+      <!-- Questions Container -->
+      <div id="question-container">
+        <!-- Progress bar for quiz -->
+        <div class="progress" id="quiz-progress">
+          <div
+            id="progress-bar"
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style="width: 0%"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            0%
+          </div>
+        </div>
+
+        <div id="aptitude-test-questions"></div>
+        <div class="text-center mt-3">
+          <button
+            class="btn btn-primary"
+            id="next-button"
+            onclick="nextQuestion()"
+          >
+            Next Question
+          </button>
+        </div>
+      </div>
+
+      <!-- Final Results -->
+      <div id="final-results">
+        <h3>Your Results</h3>
+        <p id="final-results-text"></p>
       </div>
     </div>
-  
-    <button class="btn btn-about text-white mt-4" onclick="showHome()">
-      ← Back to Home
-    </button>
-  </div>
 
-  <!-- Aptitude Test Container with Header -->
-  <div id="aptitude-test-container">
-    <header>Aptitude Test</header>
-
-    <!-- Form Fields -->
-    <div id="aptitude-test-form">
-      <div class="mb-3">
-        <label for="current-status" class="form-label">Current Stage:</label>
-        <select class="form-select" id="current-status">
-          <option value="Undergraduate">Undergraduate</option>
-          <option value="Postgraduate">Postgraduate</option>
-          <option value="Job Professional">Job Professional</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="current-field" class="form-label">Current Field:</label>
-        <input type="text" class="form-control" id="current-field" />
-      </div>
-      <div class="mb-3">
-        <label for="interest-field" class="form-label">Area of Interest:</label>
-        <input type="text" class="form-control" id="interest-field" />
-      </div>
+    <!-- Career Suggestions Container -->
+    <div
+      id="career-suggestions-container"
+      class="main-content container"
+      style="display: none"
+    >
       <div class="text-center">
-        <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
-      </div>
-    </div>
+        <h2 class="display-6 fw-bold mb-4 animate-fade-in">
+          AI-Powered Career Recommendations
+        </h2>
+        <p class="lead mb-4 animate-fade-in delay-1">
+          Discover paths tailored to your unique profile
+        </p>
 
-    <!-- Questions Container -->
-    <div id="question-container">
-      <!-- Progress bar for quiz -->
-      <div class="progress" id="quiz-progress">
-        <div
-          id="progress-bar"
-          class="progress-bar progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          style="width: 0%;"
-          aria-valuenow="0"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          0%
-        </div>
-      </div>
+        <div class="career-form" style="max-width: 700px; margin: 0 auto">
+          <div class="mb-4 animate-slide-up delay-2">
+            <label class="form-label h5">Your Skills</label>
+            <textarea
+              style="font-size: medium"
+              id="user-skills"
+              class="form-control form-control-lg"
+              rows="3"
+              placeholder="Example: Web Development, Team Leadership, Data Analysis..."
+            ></textarea>
+          </div>
 
-      <div id="aptitude-test-questions"></div>
-      <div class="text-center mt-3">
-        <button class="btn btn-primary" id="next-button" onclick="nextQuestion()">
-          Next Question
-        </button>
-      </div>
-    </div>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6 animate-slide-up delay-3">
+              <label class="form-label h5">Primary Interests</label>
+              <input
+                style="font-size: medium"
+                type="text"
+                id="user-interests"
+                class="form-control form-control-lg"
+                placeholder="Example: Technology, Education, Healthcare..."
+              />
+            </div>
+            <div class="col-md-6 animate-slide-up delay-4">
+              <label class="form-label h5">Experience Level</label>
+              <select
+                id="user-experience"
+                class="form-select form-select-lg"
+                style="font-size: medium"
+              >
+                <option value="beginner">🚀 Just Starting Out</option>
+                <option value="intermediate">📈 Building Experience</option>
+                <option value="advanced">🎯 Seasoned Professional</option>
+              </select>
+            </div>
+          </div>
 
-    <!-- Final Results -->
-    <div id="final-results">
-      <h3>Your Results</h3>
-      <p id="final-results-text"></p>
-    </div>
-  </div>
-
-  <!-- Career Suggestions Container -->
-  <div id="career-suggestions-container" class="main-content container" style="display: none;">
-    <div class="text-center">
-      <h2 class="display-6 fw-bold mb-4 animate-fade-in">AI-Powered Career Recommendations</h2>
-      <p class="lead mb-4 animate-fade-in delay-1">Discover paths tailored to your unique profile</p>
-      
-      <div class="career-form" style="max-width: 700px; margin: 0 auto;">
-        <div class="mb-4 animate-slide-up delay-2">
-          <label class="form-label h5">Your Skills</label>
-          <textarea style="font-size: medium;"
-            id="user-skills" 
-            class="form-control form-control-lg" 
-            rows="3"
-            placeholder="Example: Web Development, Team Leadership, Data Analysis..."
-          ></textarea>
-        </div>
-        
-        <div class="row g-3 mb-4">
-          <div class="col-md-6 animate-slide-up delay-3">
-            <label class="form-label h5">Primary Interests</label>
-            <input style="font-size: medium;"
-              type="text" 
-              id="user-interests" 
-              class="form-control form-control-lg" 
-              placeholder="Example: Technology, Education, Healthcare..."
+          <div class="d-grid gap-2 animate-fade-in delay-5">
+            <button
+              class="btn btn-primary btn-lg"
+              onclick="getCareerSuggestions()"
             >
-          </div>
-          <div class="col-md-6 animate-slide-up delay-4">
-            <label class="form-label h5">Experience Level</label>
-            <select id="user-experience" class="form-select form-select-lg" style="font-size: medium;">
-              <option value="beginner">🚀 Just Starting Out</option>
-              <option value="intermediate">📈 Building Experience</option>
-              <option value="advanced">🎯 Seasoned Professional</option>
-            </select>
+              Generate Recommendations
+            </button>
+            <button class="btn btn-outline-secondary" onclick="showHome()">
+              Return to Home
+            </button>
           </div>
         </div>
-  
-        <div class="d-grid gap-2 animate-fade-in delay-5">
-          <button class="btn btn-primary btn-lg" onclick="getCareerSuggestions()">
-            Generate Recommendations
-          </button>
-          <button class="btn btn-outline-secondary" onclick="showHome()">
-            Return to Home
-          </button>
+
+        <div id="career-results" class="mt-5" style="display: none">
+          <h3 class="mb-4">Your Custom Career Matrix</h3>
+          <div class="row g-4" id="career-results-container"></div>
         </div>
-      </div>
-  
-      <div id="career-results" class="mt-5" style="display: none;">
-        <h3 class="mb-4">Your Custom Career Matrix</h3>
-        <div class="row g-4" id="career-results-container"></div>
       </div>
     </div>
-  </div>
 
-  <!-- Floating Chat Toggle Button --> 
-   <div id="chatbot-toggle" onclick="toggleChat()"> 💬 </div> 
-   <!-- Chat Window --> 
-    <div id="chatbot-window"> 
-      <div id="chatbot-header" onclick="toggleChat()"> Career Guidance Bot </div> 
-      <div id="chatbot-messages"> 
+    <!-- Floating Chat Toggle Button -->
+    <div id="chatbot-toggle" onclick="toggleChat()">💬</div>
+    <!-- Chat Window -->
+    <div id="chatbot-window">
+      <div id="chatbot-header" onclick="toggleChat()">Career Guidance Bot</div>
+      <div id="chatbot-messages">
         <p>Ask any question regarding career!</p>
-        <!-- Chat messages will be appended here --> 
-      </div> 
-      <div id="chatbot-input-container"> 
-        <input type="text" id="chatbot-input" placeholder="Ask a career question..." onkeypress="if(event.key==='Enter'){sendChatMessage()}"> 
-      </div> 
+        <!-- Chat messages will appear here -->
+      </div>
+      <div id="chatbot-input-container">
+        <input
+          type="text"
+          id="chatbot-input"
+          placeholder="Ask a career question..."
+          onkeypress="if(event.key==='Enter'){sendChatMessage()}"
+        />
+      </div>
     </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    loadUserProfile();
-    let questions = [];
-    let currentQuestionIndex = 0;
-    let results = {};
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      loadUserProfile();
+      let questions = [];
+      let currentQuestionIndex = 0;
+      let results = {};
 
+      document
+        .getElementById("aptitudeTestBtn")
+        .addEventListener("click", function (e) {
+          const token = localStorage.getItem("token");
+          if (!token) {
+            // Redirect to login
+            showAuth();
+          } else {
+            // Proceed to the test page
+            showAptitudeTest();
+          }
+        });
 
-    document.getElementById("aptitudeTestBtn").addEventListener("click", function (e) {
-      const token = localStorage.getItem("token"); // Assuming you're storing token in localStorage
-      if (!token) {
-        // Redirect to login
-        showAuth();
-      } else {
-        // Proceed to the test page
-        showAptitudeTest();
-      }
-    });
+      // Reset to initial home page view
+      function showHome() {
+        document.getElementById("about-us-content").style.display = "none";
+        document.getElementById("home-content").style.display = "block";
+        document.getElementById("aptitude-test-container").style.display =
+          "none";
+        document.getElementById("auth-content").style.display = "none";
+        // Reset quiz variables and UI
+        currentQuestionIndex = 0;
+        results = {};
+        document.getElementById("aptitude-test-form").style.display = "block";
+        document.getElementById("question-container").style.display = "none";
+        document.getElementById("final-results").style.display = "none";
+        document.getElementById("final-results-text").innerHTML = "";
+        // Reset form fields
+        document.getElementById("current-status").selectedIndex = 0;
+        document.getElementById("current-field").value = "";
+        document.getElementById("interest-field").value = "";
+        // Reset progress bar
+        updateProgress(0);
+        // Scroll to top for better UX
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
+        document
+          .querySelectorAll(
+            "#home-content h1, #home-content p, #home-content .btn"
+          )
+          .forEach((el) => {
+            el.style.animation = "none";
+            setTimeout(() => {
+              el.style.animation = "";
+            }, 10);
+          });
 
-    // Reset to initial home page view
-    function showHome() {
-      document.getElementById("about-us-content").style.display = "none";
-      document.getElementById("home-content").style.display = "block";
-      document.getElementById("aptitude-test-container").style.display = "none";
-      document.getElementById("auth-content").style.display = "none";
-      // Reset quiz variables and UI
-      currentQuestionIndex = 0;
-      results = {};
-      document.getElementById("aptitude-test-form").style.display = "block";
-      document.getElementById("question-container").style.display = "none";
-      document.getElementById("final-results").style.display = "none";
-      document.getElementById("final-results-text").innerHTML = "";
-      // Reset form fields
-      document.getElementById("current-status").selectedIndex = 0;
-      document.getElementById("current-field").value = "";
-      document.getElementById("interest-field").value = "";
-      // Reset progress bar
-      updateProgress(0);
-      // Scroll to top for better UX
-      window.scrollTo({ top: 0, behavior: "smooth" });
+        const animatedElements = document.querySelectorAll(
+          ".animate-fade-in, .animate-slide-up"
+        );
+        animatedElements.forEach((el) => {
+          el.style.animation = "none";
+          void el.offsetWidth; // Trigger reflow
+          el.style.animation = "";
+        });
 
-      document.querySelectorAll('#home-content h1, #home-content p, #home-content .btn').forEach(el => {
-        el.style.animation = 'none';
-        setTimeout(() => {
-          el.style.animation = '';
-        }, 10);
-      });
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
-      animatedElements.forEach(el => {
-        el.style.animation = 'none';
-        void el.offsetWidth; // Trigger reflow
-        el.style.animation = '';
-      });
-      
-      window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("home-content").style.display = "block";
+        document.getElementById("aptitude-test-container").style.display =
+          "none";
+        document.getElementById("about-us-content").style.display = "none";
+        document.getElementById("career-suggestions-container").style.display =
+          "none";
 
-      document.getElementById("home-content").style.display = "block";
-      document.getElementById("aptitude-test-container").style.display = "none";
-      document.getElementById("about-us-content").style.display = "none";
-      document.getElementById("career-suggestions-container").style.display = "none";
-
-      var navbarCollapse = document.getElementById('navbarNav');
-      if (navbarCollapse) {
-        navbarCollapse.classList.remove('show');
-      }
-    }
-
-    // When "Take Aptitude Test" is clicked, hide home content and show test container
-    function showAptitudeTest() {
-      const token = localStorage.getItem('token');
-
-      if (!token) {
-        showAuth();
-        return;
-      }
-
-      // If the user is logged in (token exists), proceed as before
-      document.getElementById("about-us-content").style.display = "none";
-      document.getElementById("home-content").style.display = "none";
-      document.getElementById("aptitude-test-container").style.display = "block";
-      document.getElementById("auth-content").style.display = "none";
-      document.getElementById("career-suggestions-container").style.display = "none";
-
-      // Reset quiz elements (if needed when revisiting the test)
-      document.getElementById("aptitude-test-form").style.display = "block";
-      document.getElementById("question-container").style.display = "none";
-      document.getElementById("final-results").style.display = "none";
-      document.getElementById("final-results-text").innerHTML = "";
-      updateProgress(0);
-    }
-
-    async function startQuiz() {
-      const currentStatus = document.getElementById("current-status").value;
-      const currentField = document.getElementById("current-field").value;
-      const interestField = document.getElementById("interest-field").value;
-
-      results = { currentStatus, currentField, interestField };
-
-      const apiUrl = `${window.location.origin}/generate-questions`;
-
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ currentStatus, currentField, interestField  }),
-      });
-
-      if (!response.ok) {
-        alert("Failed to fetch questions.");
-        return;
+        var navbarCollapse = document.getElementById("navbarNav");
+        if (navbarCollapse) {
+          navbarCollapse.classList.remove("show");
+        }
       }
 
-      questions = await response.json();
-      currentQuestionIndex = 0;
+      // When "Take Aptitude Test" is clicked, hide home content and show test container
+      function showAptitudeTest() {
+        const token = localStorage.getItem("token");
 
-      // Hide the form fields so that only questions are shown
-      document.getElementById("aptitude-test-form").style.display = "none";
-      document.getElementById("question-container").style.display = "block";
-      document.getElementById("final-results").style.display = "none";
-      document.getElementById("auth-content").style.display = "none";
-      
-      displayQuestion();
-    }
+        if (!token) {
+          showAuth();
+          return;
+        }
 
-    function displayQuestion() {
-      const question = questions[currentQuestionIndex];
-      const container = document.getElementById("aptitude-test-questions");
-      container.innerHTML = `<p>${currentQuestionIndex + 1}. ${question.question}</p>`;
+        // If the user is logged in (token exists), proceed as before
+        document.getElementById("about-us-content").style.display = "none";
+        document.getElementById("home-content").style.display = "none";
+        document.getElementById("aptitude-test-container").style.display =
+          "block";
+        document.getElementById("auth-content").style.display = "none";
+        document.getElementById("career-suggestions-container").style.display =
+          "none";
 
-      question.options.forEach((option, index) => {
-        const input = `<div class="form-check">
-          <input type="radio" class="form-check-input" name="question" value="${option}" id="option-${index}">
-          <label class="form-check-label" for="option-${index}">${option}</label>
-        </div>`;
-        container.innerHTML += input;
-      });
-
-      const nextBtn = document.getElementById("next-button");
-      // Change button text to "Finish" if this is the last question, otherwise "Next Question"
-      if (currentQuestionIndex === questions.length - 1) {
-        nextBtn.textContent = "Finish";
-      } else {
-        nextBtn.textContent = "Next Question";
+        // Reset quiz elements (if needed when revisiting the test)
+        document.getElementById("aptitude-test-form").style.display = "block";
+        document.getElementById("question-container").style.display = "none";
+        document.getElementById("final-results").style.display = "none";
+        document.getElementById("final-results-text").innerHTML = "";
+        updateProgress(0);
       }
 
-      // Update the progress bar for the current question
-      updateProgress(currentQuestionIndex);
-    }
+      async function startQuiz() {
+        const currentStatus = document.getElementById("current-status").value;
+        const currentField = document.getElementById("current-field").value;
+        const interestField = document.getElementById("interest-field").value;
 
-    function nextQuestion() {
-      const selectedOption = document.querySelector("input[name='question']:checked");
-      if (!selectedOption) {
-        alert("Please select an option.");
-        return;
-      }
+        results = { currentStatus, currentField, interestField };
 
-      // Record the user's answer
-      results[`question-${currentQuestionIndex}`] = selectedOption.value;
-      currentQuestionIndex++;
+        const apiUrl = `${window.location.origin}/generate-questions`;
 
-      // If there are more questions, display the next one. Otherwise, calculate the results.
-      if (currentQuestionIndex < questions.length) {
-        displayQuestion();
-      } else {
-        calculateAptitude();
-      }
-    }
-
-    function updateProgress(index) {
-      const total = questions.length;
-      // If no questions yet, or just started, keep it at 0
-      if (total === 0) {
-        setProgressBar(0);
-        return;
-      }
-      // Calculate progress based on the question index
-      // For question #index, progress is (index / total)*100
-      const progress = (index / total) * 100;
-      setProgressBar(progress);
-    }
-
-    function setProgressBar(value) {
-      const progressBar = document.getElementById("progress-bar");
-      const roundedValue = Math.round(value);
-      progressBar.style.width = `${roundedValue}%`;
-      progressBar.setAttribute("aria-valuenow", roundedValue);
-      progressBar.textContent = `${roundedValue}%`;
-    }
-
-    async function calculateAptitude() {
-      try {
-        const apiUrl1 = `${window.location.origin}/analyze-results`;
-        const response = await fetch(apiUrl1, {
+        const response = await fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ results }),
+          body: JSON.stringify({ currentStatus, currentField, interestField }),
         });
 
         if (!response.ok) {
-          alert("Failed to analyze results.");
+          alert("Failed to fetch questions.");
           return;
         }
 
-        let data;
-        try {
-          data = await response.json();
-        } catch (err) {
-          console.error("Error parsing JSON:", err);
-          alert("There was an error processing the results.");
-          return;
-        }
+        questions = await response.json();
+        currentQuestionIndex = 0;
 
-        if (!data || !data.analysis) {
-          alert("The results could not be processed correctly.");
-          return;
-        }
-
-        // Fill the progress bar to 100%
-        setProgressBar(100);
-
-        // Hide question container, show final results
-        document.getElementById("aptitude-test-questions").style.display = "none";
-        document.getElementById("next-button").style.display = "none";
-        document.getElementById("final-results").style.display = "block";
-        document.getElementById("final-results-text").innerHTML = data.analysis;
+        // Hide the form fields so that only questions are shown
+        document.getElementById("aptitude-test-form").style.display = "none";
+        document.getElementById("question-container").style.display = "block";
+        document.getElementById("final-results").style.display = "none";
         document.getElementById("auth-content").style.display = "none";
-      } catch (error) {
-        console.error("Error in calculateAptitude:", error);
-        alert("An unexpected error occurred while analyzing the results.");
+
+        displayQuestion();
       }
-    }
 
-    function showAboutUs() {
-      document.getElementById("home-content").style.display = "none";
-      document.getElementById("aptitude-test-container").style.display = "none";
-      document.getElementById("about-us-content").style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      document.getElementById("career-suggestions-container").style.display = "none";
-      document.getElementById("auth-content").style.display = "none";
-    }
+      function displayQuestion() {
+        const question = questions[currentQuestionIndex];
+        const container = document.getElementById("aptitude-test-questions");
+        container.innerHTML = `<p>${currentQuestionIndex + 1}. ${
+          question.question
+        }</p>`;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // Reset animations when returning to home
-      const homeContent = document.getElementById('home-content');
-      homeContent.style.animation = 'none';
-      setTimeout(() => {
-        homeContent.style.animation = '';
-      }, 10);
-    });
+        question.options.forEach((option, index) => {
+          const input = `<div class="form-check">
+          <input type="radio" class="form-check-input" name="question" value="${option}" id="option-${index}">
+          <label class="form-check-label" for="option-${index}">${option}</label>
+        </div>`;
+          container.innerHTML += input;
+        });
 
-    document.addEventListener('DOMContentLoaded', () => {
-  // Animate elements on load
-  anime({
-      targets: '.animate__animated',
-      opacity: [0, 1],
-      translateY: [30, 0],
-      delay: anime.stagger(100),
-      easing: 'easeOutExpo',
-      duration: 800
-    });
-  });
+        const nextBtn = document.getElementById("next-button");
+        // Change button text to "Finish" if this is the last question, otherwise "Next Question"
+        if (currentQuestionIndex === questions.length - 1) {
+          nextBtn.textContent = "Finish";
+        } else {
+          nextBtn.textContent = "Next Question";
+        }
 
-  function showCareerSuggestions() {
-      document.getElementById("home-content").style.display = "none";
-      document.getElementById("aptitude-test-container").style.display = "none";
-      document.getElementById("about-us-content").style.display = "none";
-      document.getElementById("career-suggestions-container").style.display = "block";
-      document.getElementById("auth-content").style.display = "none";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+        // Update the progress bar for the current question
+        updateProgress(currentQuestionIndex);
+      }
 
-  async function getCareerSuggestions() {
+      function nextQuestion() {
+        const selectedOption = document.querySelector(
+          "input[name='question']:checked"
+        );
+        if (!selectedOption) {
+          alert("Please select an option.");
+          return;
+        }
 
-      const btn2 = document.querySelector('#career-suggestions-container .btn-primary');
-      btn2.innerHTML = `
-        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-        Analyzing Your Profile...
-      `;
-      const btn = document.querySelector('#career-suggestions-container button');
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Analyzing...';
+        // Record the user's answer
+        results[`question-${currentQuestionIndex}`] = selectedOption.value;
+        currentQuestionIndex++;
 
-      const userProfile = {
-          skills: document.getElementById('user-skills').value,
-          interests: document.getElementById('user-interests').value,
-          experience: document.getElementById('user-experience').value
-      };
+        // If there are more questions, display the next one. Otherwise, calculate the results.
+        if (currentQuestionIndex < questions.length) {
+          displayQuestion();
+        } else {
+          calculateAptitude();
+        }
+      }
 
-      try {
-          const apiUrl1 = `${window.location.origin}/career-suggestions`;
+      function updateProgress(index) {
+        const total = questions.length;
+        // If no questions yet, or just started, keep it at 0
+        if (total === 0) {
+          setProgressBar(0);
+          return;
+        }
+        // Calculate progress based on the question index
+        // For question #index, progress is (index / total)*100
+        const progress = (index / total) * 100;
+        setProgressBar(progress);
+      }
+
+      function setProgressBar(value) {
+        const progressBar = document.getElementById("progress-bar");
+        const roundedValue = Math.round(value);
+        progressBar.style.width = `${roundedValue}%`;
+        progressBar.setAttribute("aria-valuenow", roundedValue);
+        progressBar.textContent = `${roundedValue}%`;
+      }
+
+      async function calculateAptitude() {
+        try {
+          const apiUrl1 = `${window.location.origin}/analyze-results`;
           const response = await fetch(apiUrl1, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(userProfile),
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ results }),
           });
 
           if (!response.ok) {
-              throw new Error('API request failed');
+            alert("Failed to analyze results.");
+            return;
+          }
+
+          let data;
+          try {
+            data = await response.json();
+          } catch (err) {
+            console.error("Error parsing JSON:", err);
+            alert("There was an error processing the results.");
+            return;
+          }
+
+          if (!data || !data.analysis) {
+            alert("The results could not be processed correctly.");
+            return;
+          }
+
+          // Fill the progress bar to 100%
+          setProgressBar(100);
+
+          // Hide question container, show final results
+          document.getElementById("aptitude-test-questions").style.display =
+            "none";
+          document.getElementById("next-button").style.display = "none";
+          document.getElementById("final-results").style.display = "block";
+          document.getElementById("final-results-text").innerHTML =
+            data.analysis;
+          document.getElementById("auth-content").style.display = "none";
+        } catch (error) {
+          console.error("Error in calculateAptitude:", error);
+          alert("An unexpected error occurred while analyzing the results.");
+        }
+      }
+
+      function showAboutUs() {
+        document.getElementById("home-content").style.display = "none";
+        document.getElementById("aptitude-test-container").style.display =
+          "none";
+        document.getElementById("about-us-content").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("career-suggestions-container").style.display =
+          "none";
+        document.getElementById("auth-content").style.display = "none";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Reset animations when returning to home
+        const homeContent = document.getElementById("home-content");
+        homeContent.style.animation = "none";
+        setTimeout(() => {
+          homeContent.style.animation = "";
+        }, 10);
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Animate elements on load
+        anime({
+          targets: ".animate__animated",
+          opacity: [0, 1],
+          translateY: [30, 0],
+          delay: anime.stagger(100),
+          easing: "easeOutExpo",
+          duration: 800,
+        });
+      });
+
+      function showCareerSuggestions() {
+        document.getElementById("home-content").style.display = "none";
+        document.getElementById("aptitude-test-container").style.display =
+          "none";
+        document.getElementById("about-us-content").style.display = "none";
+        document.getElementById("career-suggestions-container").style.display =
+          "block";
+        document.getElementById("auth-content").style.display = "none";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("career-results").style.display = "none";
+      }
+
+      async function getCareerSuggestions() {
+        const btn2 = document.querySelector(
+          "#career-suggestions-container .btn-primary"
+        );
+        btn2.innerHTML = `
+        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+        Analyzing Your Profile...
+      `;
+        const btn = document.querySelector(
+          "#career-suggestions-container button"
+        );
+        btn.disabled = true;
+        btn.innerHTML =
+          '<span class="spinner-border spinner-border-sm" role="status"></span> Analyzing...';
+
+        const userProfile = {
+          skills: document.getElementById("user-skills").value,
+          interests: document.getElementById("user-interests").value,
+          experience: document.getElementById("user-experience").value,
+        };
+
+        try {
+          const apiUrl1 = `${window.location.origin}/career-suggestions`;
+          const response = await fetch(apiUrl1, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userProfile),
+          });
+
+          if (!response.ok) {
+            throw new Error("API request failed");
           }
 
           const data = await response.json();
           displayCareerResults(data.analysis); // data.analysis now contains the array of career suggestions
-      } catch (error) {
-          console.error('Error:', error);
-          alert('Failed to get suggestions. Please try again.');
-      } finally {
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Failed to get suggestions. Please try again.");
+        } finally {
           btn.disabled = false;
-          btn.innerHTML = 'Get Recommendations';
+          btn.innerHTML = "Get Recommendations";
+        }
+
+        btn.innerHTML = "Generate Recommendations";
       }
+      function displayCareerResults(results) {
+        const container = document.getElementById("career-results");
+        container.style.display = "block";
 
-      btn.innerHTML = 'Generate Recommendations';
+        let html = '<h4 class="mb-4">Recommended Career Paths:</h4>';
 
-  }
-  function displayCareerResults(results) {
-    const container = document.getElementById('career-results');
-    container.style.display = 'block';
+        results.forEach((career, index) => {
+          // Safely handle skills data
+          const skills = Array.isArray(career.required_skills)
+            ? career.required_skills
+            : typeof career.required_skills === "string"
+            ? career.required_skills.split(", ")
+            : [];
 
-    let html = '<h4 class="mb-4">Recommended Career Paths:</h4>';
-    
-    results.forEach((career, index) => {
-        // Safely handle skills data
-        const skills = Array.isArray(career.required_skills) 
-            ? career.required_skills 
-            : (typeof career.required_skills === 'string' 
-                ? career.required_skills.split(', ') 
-                : []);
-
-        html += `
-            <div class="card mb-3 career-card" style="animation-delay: ${index * 0.2}s">
+          html += `
+            <div class="card mb-3 career-card" style="animation-delay: ${
+              index * 0.2
+            }s">
                 <div class="card-body">
-                    <h5 class="card-title">${index + 1}. ${career.career_title}</h5>
+                    <h5 class="card-title">${index + 1}. ${
+            career.career_title
+          }</h5>
                     <div class="d-flex align-items-center mb-3">
                       <span class="badge bg-primary me-2">Growth Potential</span>
                       <div class="progress flex-grow-1" style="height: 8px;">
@@ -1703,420 +1813,423 @@
                       </div>
                     </div>
                     <div class="skills-container">
-                        ${skills.map(skill => `
+                        ${skills
+                          .map(
+                            (skill) => `
                             <span class="skill-pill">${skill.trim()}</span>
-                        `).join('')}
+                        `
+                          )
+                          .join("")}
                     </div>
                 </div>
             </div>
         `;
-    });
+        });
 
-    container.innerHTML = html;
+        container.innerHTML = html;
 
-    // Animate progress bars after render
-    setTimeout(() => {
-        document.querySelectorAll('.progress-bar').forEach(bar => {
+        // Animate progress bars after render
+        setTimeout(() => {
+          document.querySelectorAll(".progress-bar").forEach((bar) => {
             bar.style.width = bar.style.width; // Trigger animation
-        });
-    }, 100);
-}
+          });
+        }, 100);
+      }
 
-    // Animate progress bars
-    setTimeout(() => {
-      document.querySelectorAll('.progress-fill').forEach(bar => {
-        bar.style.width = bar.style.width;
+      // Animate progress bars
+      setTimeout(() => {
+        document.querySelectorAll(".progress-fill").forEach((bar) => {
+          bar.style.width = bar.style.width;
+        });
+      }, 500);
+
+      document.getElementById("career-results").style.display = "block";
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropdownItems = document.querySelectorAll(
+          ".dropdown-menu .dropdown-item"
+        ); // Target dropdown items
+        const navbarCollapse = document.querySelector(".navbar-collapse");
+
+        dropdownItems.forEach(function (item) {
+          item.addEventListener("click", function () {
+            if (navbarCollapse.classList.contains("show")) {
+              const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+              bsCollapse.hide();
+            }
+          });
+        });
       });
-    }, 500);
 
-    document.getElementById('career-results').style.display = 'block';
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+        const navbarCollapse = document.querySelector(".navbar-collapse");
+        const getGuidanceLink = document.querySelector("#navbarDropdown");
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownItems = document.querySelectorAll('.dropdown-menu .dropdown-item'); // Target dropdown items
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-
-        dropdownItems.forEach(function(item) {
-            item.addEventListener('click', function() {
-                if (navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
-                    bsCollapse.hide();
-                }
-            });
+        navLinks.forEach(function (link) {
+          link.addEventListener("click", function () {
+            if (
+              link !== getGuidanceLink &&
+              navbarCollapse.classList.contains("show")
+            ) {
+              const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+              bsCollapse.hide();
+            }
+          });
         });
-    });
+      });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        const getGuidanceLink = document.querySelector('#navbarDropdown'); // Select the "Get Guidance" link
-
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                // Check if the clicked link is NOT the "Get Guidance" link
-                if (link !== getGuidanceLink && navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
-                    bsCollapse.hide();
-                }
-            });
-        });
-    });
-
-    // Show Login Page
-    function showAuth() {
-      hideAllSections();
-      document.getElementById("auth-content").style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    /*// Handle Login Form Submission
-    document.getElementById('auth-content').querySelector('#loginForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const btn = document.querySelector('#loginForm button');
-      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Signing in...';
-      btn.disabled = true;
-
-      // Simulated API call
-      setTimeout(() => {
-        btn.innerHTML = 'Sign In';
-        btn.disabled = false;
-        showHome();
-        alert('Login successful!');
-      }, 1500);
-    });*/
-
-    // Helper function to hide all sections
-    function hideAllSections() {
-      document.getElementById("home-content").style.display = "none";
-      document.getElementById("aptitude-test-container").style.display = "none";
-      document.getElementById("about-us-content").style.display = "none";
-      document.getElementById("career-suggestions-container").style.display = "none";
-      // document.getElementById("login-content").style.display = "none";
-      // document.getElementById("signup-content").style.display = "none";
-
-      const sections = [
-        'home-content',
-        'aptitude-test-container',
-        'about-us-content',
-        'career-suggestions-container',
-        'auth-content'
-      ];
-      sections.forEach(id => document.getElementById(id).style.display = 'none');
-
-      // Close mobile menu
-      const navbarCollapse = document.querySelector('.navbar-collapse');
-      if (navbarCollapse.classList.contains('show')) {
-        new bootstrap.Collapse(navbarCollapse).hide();
-      }
-    }
-
-
-    // Show Signup Page
-    function showAuth() {
-      hideAllSections();
-      document.getElementById("auth-content").style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    /*// Handle Signup Form Submission
-    document.getElementById('auth-content').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const btn = document.querySelector('#signupForm button');
-      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Creating account...';
-      btn.disabled = true;
-
-      // Simulated API call
-      setTimeout(() => {
-        btn.innerHTML = 'Create Account';
-        btn.disabled = false;
-        showHome();
-        alert('Account created successfully!');
-      }, 1500);
-    });*/
-
-    let isLoginForm = true;
-
-    function toggleAuthForm() {
-      const loginForm = document.getElementById('loginForm');
-      const signupForm = document.getElementById('signupForm');
-      const loginToggleText = document.getElementById('loginToggleText');
-      const authToggleLink = document.getElementById('authToggleLink');
-
-      if (loginForm.style.display === 'block') {
-        loginForm.style.display = 'none';
-        signupForm.style.display = 'block';
-        loginToggleText.textContent = "Already have an account?";
-        authToggleLink.textContent = "Log in";
-      } else {
-        loginForm.style.display = 'block';
-        signupForm.style.display = 'none';
-        loginToggleText.textContent = "Don't have an account?";
-        authToggleLink.textContent = "Sign up";
-      }
-    }
-
-    function showAuth() {
-      hideAllSections();
-      document.getElementById("auth-content").style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      isLoginForm = true;
-      document.getElementById('loginForm').style.display = 'block';
-      document.getElementById('signupForm').style.display = 'none';
-    }
-
-    // Updated Login Handler
-    document.getElementById('auth-content').querySelector('#loginForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Signing in...';
-      btn.disabled = true;
-
-      try {
-        const response = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: document.getElementById('loginEmail').value,
-            password: document.getElementById('loginPassword').value
-          })
-        });
-
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.msg || 'Login failed');
-
-        localStorage.setItem('token', data.token);
-        updateNavbar();
-        loadUserProfile();
-        showHome();
-        alert('Login successful!');
-      } catch (error) {
-        alert(error.message);
-      } finally {
-        btn.innerHTML = 'Sign In';
-        btn.disabled = false;
-      }
-    });
-
-    // Updated Signup Handler
-    document.getElementById('auth-content').querySelector('#signupForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Creating account...';
-      btn.disabled = true;
-
-      const password = document.getElementById('signupPassword').value;
-      const confirmPassword = document.getElementById('signupConfirmPassword').value;
-
-      if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        btn.innerHTML = 'Create Account';
-        btn.disabled = false;
-        return;
+      // Show Login Page
+      function showAuth() {
+        hideAllSections();
+        document.getElementById("auth-content").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
-      try {
-        const response = await fetch('/api/auth/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: document.getElementById('signupName').value,
-            email: document.getElementById('signupEmail').value,
-            password: password
-          })
-        });
+      // Helper function to hide all sections
+      function hideAllSections() {
+        document.getElementById("home-content").style.display = "none";
+        document.getElementById("aptitude-test-container").style.display =
+          "none";
+        document.getElementById("about-us-content").style.display = "none";
+        document.getElementById("career-suggestions-container").style.display =
+          "none";
 
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.msg || 'Signup failed');
+        const sections = [
+          "home-content",
+          "aptitude-test-container",
+          "about-us-content",
+          "career-suggestions-container",
+          "auth-content",
+        ];
+        sections.forEach(
+          (id) => (document.getElementById(id).style.display = "none")
+        );
 
-        localStorage.setItem('token', data.token);
-        toggleAuthForm();
-        alert('Account created successfully!');
-      } catch (error) {
-        alert(error.message);
-      } finally {
-        btn.innerHTML = 'Create Account';
-        btn.disabled = false;
-      }
-    });
-  
-    async function loadUserProfile() {
-      try {
-        let welcomeEl = document.getElementById('welcome-message');
-        const token = localStorage.getItem('token');
-        const assessmentBtn = document.getElementById('assessment-button');
-        if (!token) {
-          if (assessmentBtn) {
-            assessmentBtn.textContent = "Get Career Suggestions";
-            document.getElementById("assessment-button").setAttribute("onclick", "showCareerSuggestions()");
-          }
-          if (welcomeEl) {
-            welcomeEl.classList.add('d-none');
-          }
-          return;
+        // Close mobile menu
+        const navbarCollapse = document.querySelector(".navbar-collapse");
+        if (navbarCollapse.classList.contains("show")) {
+          new bootstrap.Collapse(navbarCollapse).hide();
         }
+      }
 
-        if(token){
-          if(welcomeEl){
-            welcomeEl.classList.remove('d-none');
-          }
-        }
+      // Show Signup Page
+      function showAuth() {
+        hideAllSections();
+        document.getElementById("auth-content").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
 
-        const response = await fetch('/api/user/profile', {
-          headers: { 'x-auth-token': token }
-        });
-        if (!response.ok) throw new Error('Failed to fetch user profile');
-        const user = await response.json();
+      let isLoginForm = true;
 
-        
-        if (!welcomeEl) {
-          welcomeEl = document.createElement('h2');
-          welcomeEl.id = 'welcome-message';
-          welcomeEl.style.marginBottom = '30px';
-          welcomeEl.textContent = `Welcome back, ${user.name}`;
-          // Set initial opacity to ensure the animation starts
-          welcomeEl.style.opacity = 0;
-          document.getElementById('home-content').prepend(welcomeEl);
-          
-          // Force reflow to reset the animation
-          void welcomeEl.offsetWidth;
-          welcomeEl.classList.add('animate-slide-up', 'animate-fade-in');
+      function toggleAuthForm() {
+        const loginForm = document.getElementById("loginForm");
+        const signupForm = document.getElementById("signupForm");
+        const loginToggleText = document.getElementById("loginToggleText");
+        const authToggleLink = document.getElementById("authToggleLink");
+
+        if (loginForm.style.display === "block") {
+          loginForm.style.display = "none";
+          signupForm.style.display = "block";
+          loginToggleText.textContent = "Already have an account?";
+          authToggleLink.textContent = "Log in";
         } else {
-          welcomeEl.textContent = `Welcome back, ${user.name}`;
-          welcomeEl.style.marginBottom = '30px';
-          // Remove and re-add classes to restart animation
-          welcomeEl.classList.remove('animate-slide-up', 'animate-fade-in');
-          void welcomeEl.offsetWidth;
-          welcomeEl.classList.add('animate-slide-up', 'animate-fade-in');
+          loginForm.style.display = "block";
+          signupForm.style.display = "none";
+          loginToggleText.textContent = "Don't have an account?";
+          authToggleLink.textContent = "Sign up";
         }
-
-        if (assessmentBtn) {
-          document.getElementById("assessment-button").setAttribute("onclick", "showAptitudeTest()");
-          assessmentBtn.textContent = "Take Free Assessment";
-        }
-      } catch (error) {
-        console.error(error.message);
       }
-    }
 
-    function isTokenValid(token) {
-      if (!token) return false;
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        return payload.exp * 1000 > Date.now();
-      } catch (e) {
-        return false;
+      function showAuth() {
+        hideAllSections();
+        document.getElementById("auth-content").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        isLoginForm = true;
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("signupForm").style.display = "none";
       }
-    }
 
-    // Update navbar based on login status
-    function updateNavbar() {
-      const token = localStorage.getItem("token");
-      const loginBtn = document.querySelector(".btn.btn-outline-light.ms-2");
-      const userMenu = document.getElementById("userMenu");
-      if (token && isTokenValid(token)) {
-        loginBtn.classList.add("d-none");
-        userMenu.classList.remove("d-none");
-      } else {
-        loginBtn.classList.remove("d-none");
-        userMenu.classList.add("d-none");
-      }
-    }
+      // Updated Login Handler
+      document
+        .getElementById("auth-content")
+        .querySelector("#loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = e.target.querySelector("button");
+          btn.innerHTML =
+            '<span class="spinner-border spinner-border-sm"></span> Signing in...';
+          btn.disabled = true;
 
-    // Run updateNavbar on DOM load
-    document.addEventListener("DOMContentLoaded", updateNavbar);
+          try {
+            const response = await fetch("/api/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: document.getElementById("loginEmail").value,
+                password: document.getElementById("loginPassword").value,
+              }),
+            });
 
-    // Attach logout functionality
-    document.getElementById("logoutBtn")?.addEventListener("click", function () {
-      localStorage.removeItem("token");
-      updateNavbar();
-      loadUserProfile();
-      // Optionally, redirect to the login screen or refresh the page:
-      showHome();
-    });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.msg || "Login failed");
 
-    // Toggle the visibility of the chat window
-    function toggleChat() {
-      const chatWindow = document.getElementById('chatbot-window');
-      const isHidden = chatWindow.style.display === 'none' || chatWindow.style.display === '';
-      chatWindow.style.display = isHidden ? 'flex' : 'none';
-    }
-
-    // Append a message to the chat window
-    function appendMessage(sender, text) {
-      const messagesDiv = document.getElementById('chatbot-messages');
-      const messageElem = document.createElement('div');
-
-      messageElem.style.marginBottom = '10px';
-      messageElem.innerHTML = `<strong>${sender}:</strong> ${text}`;
-
-      messagesDiv.appendChild(messageElem);
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
-
-    // Send the chat message to the server and display the response
-    async function sendChatMessage() {
-      const inputField = document.getElementById('chatbot-input');
-      const userMessage = inputField.value.trim();
-
-      if (!userMessage) return;
-
-      appendMessage('You', userMessage);
-      inputField.value = '';
-
-      try {
-        const response = await fetch(`${window.location.origin}/career-chat`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: userMessage })
+            localStorage.setItem("token", data.token);
+            updateNavbar();
+            loadUserProfile();
+            showHome();
+            alert("Login successful!");
+          } catch (error) {
+            alert(error.message);
+          } finally {
+            btn.innerHTML = "Sign In";
+            btn.disabled = false;
+          }
         });
 
-        if (!response.ok) {
-          appendMessage('Bot', 'Sorry, I encountered an error.');
-          return;
+      // Updated Signup Handler
+      document
+        .getElementById("auth-content")
+        .querySelector("#signupForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = e.target.querySelector("button");
+          btn.innerHTML =
+            '<span class="spinner-border spinner-border-sm"></span> Creating account...';
+          btn.disabled = true;
+
+          const password = document.getElementById("signupPassword").value;
+          const confirmPassword = document.getElementById(
+            "signupConfirmPassword"
+          ).value;
+
+          if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            btn.innerHTML = "Create Account";
+            btn.disabled = false;
+            return;
+          }
+
+          try {
+            const response = await fetch("/api/auth/signup", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name: document.getElementById("signupName").value,
+                email: document.getElementById("signupEmail").value,
+                password: password,
+              }),
+            });
+
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.msg || "Signup failed");
+
+            localStorage.setItem("token", data.token);
+            toggleAuthForm();
+            alert("Account created successfully!");
+          } catch (error) {
+            alert(error.message);
+          } finally {
+            btn.innerHTML = "Create Account";
+            btn.disabled = false;
+          }
+        });
+
+      async function loadUserProfile() {
+        try {
+          let welcomeEl = document.getElementById("welcome-message");
+          const token = localStorage.getItem("token");
+          const assessmentBtn = document.getElementById("assessment-button");
+          if (!token) {
+            if (assessmentBtn) {
+              assessmentBtn.textContent = "Get Career Suggestions";
+              document
+                .getElementById("assessment-button")
+                .setAttribute("onclick", "showCareerSuggestions()");
+            }
+            if (welcomeEl) {
+              welcomeEl.classList.add("d-none");
+            }
+            return;
+          }
+
+          if (token) {
+            if (welcomeEl) {
+              welcomeEl.classList.remove("d-none");
+            }
+          }
+
+          const response = await fetch("/api/user/profile", {
+            headers: { "x-auth-token": token },
+          });
+          if (!response.ok) throw new Error("Failed to fetch user profile");
+          const user = await response.json();
+
+          if (!welcomeEl) {
+            welcomeEl = document.createElement("h2");
+            welcomeEl.id = "welcome-message";
+            welcomeEl.style.marginBottom = "30px";
+            welcomeEl.textContent = `Welcome back, ${user.name}`;
+            // Set initial opacity to ensure the animation starts
+            welcomeEl.style.opacity = 0;
+            document.getElementById("home-content").prepend(welcomeEl);
+
+            // Force reflow to reset the animation
+            void welcomeEl.offsetWidth;
+            welcomeEl.classList.add("animate-slide-up", "animate-fade-in");
+          } else {
+            welcomeEl.textContent = `Welcome back, ${user.name}`;
+            welcomeEl.style.marginBottom = "30px";
+            // Remove and re-add classes to restart animation
+            welcomeEl.classList.remove("animate-slide-up", "animate-fade-in");
+            void welcomeEl.offsetWidth;
+            welcomeEl.classList.add("animate-slide-up", "animate-fade-in");
+          }
+
+          if (assessmentBtn) {
+            document
+              .getElementById("assessment-button")
+              .setAttribute("onclick", "showAptitudeTest()");
+            assessmentBtn.textContent = "Take Free Assessment";
+          }
+        } catch (error) {
+          console.error(error.message);
         }
-
-        const data = await response.json();
-        appendMessage('Bot', data.answer);
-
-      } catch (error) {
-        console.error(error);
-        appendMessage('Bot', 'Sorry, I encountered an error.');
       }
-    }
 
-  </script>
+      function isTokenValid(token) {
+        if (!token) return false;
+        try {
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          return payload.exp * 1000 > Date.now();
+        } catch (e) {
+          return false;
+        }
+      }
 
-  <!-- Bootstrap Icons -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="speedometer2" viewBox="0 0 16 16">
-    <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
-    <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
-  </symbol>
+      // Update navbar based on login status
+      function updateNavbar() {
+        const token = localStorage.getItem("token");
+        const loginBtn = document.querySelector(".btn.btn-outline-light.ms-2");
+        const userMenu = document.getElementById("userMenu");
+        if (token && isTokenValid(token)) {
+          loginBtn.classList.add("d-none");
+          userMenu.classList.remove("d-none");
+        } else {
+          loginBtn.classList.remove("d-none");
+          userMenu.classList.add("d-none");
+        }
+      }
 
-  <symbol id="graph-up" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0zm10 11.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.6l-3.613-4.417a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61L13.445 11H10.5a.5.5 0 0 0-.5.5z"/>
-  </symbol>
+      // Run updateNavbar on DOM load
+      document.addEventListener("DOMContentLoaded", updateNavbar);
 
-  <symbol id="people-circle" viewBox="0 0 16 16">
-    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-  </symbol>
-</svg>
+      // Attach logout functionality
+      document
+        .getElementById("logoutBtn")
+        ?.addEventListener("click", function () {
+          localStorage.removeItem("token");
+          updateNavbar();
+          loadUserProfile();
+          // Optionally, redirect to the login screen or refresh the page:
+          showHome();
+        });
 
-<script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    if (typeof showdown !== "undefined") {
-      const converter = new showdown.Converter({ tables: true });
-      document.querySelectorAll(".markdown-enhanced").forEach((el) => {
-        el.innerHTML = converter.makeHtml(el.innerHTML);
+      // Toggle the visibility of the chat window
+      function toggleChat() {
+        const chatWindow = document.getElementById("chatbot-window");
+        const isHidden =
+          chatWindow.style.display === "none" ||
+          chatWindow.style.display === "";
+        chatWindow.style.display = isHidden ? "flex" : "none";
+      }
+
+      // Append a message to the chat window
+      function appendMessage(sender, text) {
+        const messagesDiv = document.getElementById("chatbot-messages");
+        const messageElem = document.createElement("div");
+
+        messageElem.style.marginBottom = "10px";
+        messageElem.innerHTML = `<strong>${sender}:</strong> ${text}`;
+
+        messagesDiv.appendChild(messageElem);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      // Send the chat message to the server and display the response
+      async function sendChatMessage() {
+        const inputField = document.getElementById("chatbot-input");
+        const userMessage = inputField.value.trim();
+
+        if (!userMessage) return;
+
+        appendMessage("You", userMessage);
+        inputField.value = "";
+
+        try {
+          const response = await fetch(
+            `${window.location.origin}/career-chat`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ message: userMessage }),
+            }
+          );
+
+          if (!response.ok) {
+            appendMessage("Bot", "Sorry, I encountered an error.");
+            return;
+          }
+
+          const data = await response.json();
+          appendMessage("Bot", data.answer);
+        } catch (error) {
+          console.error(error);
+          appendMessage("Bot", "Sorry, I encountered an error.");
+        }
+      }
+    </script>
+
+    <!-- Bootstrap Icons -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+      <symbol id="speedometer2" viewBox="0 0 16 16">
+        <path
+          d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"
+        />
+      </symbol>
+
+      <symbol id="graph-up" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M0 0h1v15h15v1H0V0zm10 11.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.6l-3.613-4.417a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61L13.445 11H10.5a.5.5 0 0 0-.5.5z"
+        />
+      </symbol>
+
+      <symbol id="people-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        <path
+          fill-rule="evenodd"
+          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+        />
+      </symbol>
+    </svg>
+
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof showdown !== "undefined") {
+          const converter = new showdown.Converter({ tables: true });
+          document.querySelectorAll(".markdown-enhanced").forEach((el) => {
+            el.innerHTML = converter.makeHtml(el.innerHTML);
+          });
+        } else {
+          console.error("Showdown not loaded.");
+        }
       });
-    } else {
-      console.error("Showdown not loaded.");
-    }
-  });
-</script>
-
-</body>
+    </script>
+  </body>
 </html>
