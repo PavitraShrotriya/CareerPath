@@ -143,7 +143,7 @@ app.post('/generate-questions', async (req, res) => {
             - "category": The aspect being evaluated (e.g., Skills, Personality, Problem-Solving, Work Preferences).`;
 
 
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
         const result = await model.generateContent({ contents: [{ role: "user", parts: [{ text: prompt }] }] });
         
         const textResponse = result.response.candidates[0].content.parts[0].text; // Corrected API response handling
@@ -170,7 +170,7 @@ app.post('/analyze-results', async (req, res) => {
             
             Keep the response concise, practical, and actionable. It should provide a guidance and should show the truth and also some other options based on field of interest and current field`;
         
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
         const result = await model.generateContent({ contents: [{ role: "user", parts: [{ text: prompt }] }] });
 
         const analysis = result.response.candidates[0].content.parts[0].text;
@@ -198,7 +198,7 @@ app.post('/career-suggestions', async (req, res) => {
         Experience: ${userProfile.experience}
         Return as JSON array with fields: career_title, growth_outlook, required_skills`;
 
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
         const result = await model.generateContent({ contents: [{ role: "user", parts: [{ text: prompt }] }] });
 
         const textResponse = result.response.candidates[0].content.parts[0].text;
@@ -227,8 +227,8 @@ User: ${userMessage}
 Provide a clear, concise, and helpful response in 2-3 sentences.
 `;
 
-    // Use Gemini model (adjust 'gemini-1.5-flash' if you're using a different version)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // Use Gemini model (adjust 'gemini-2.5-flash' if you're using a different version)
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const result = await model.generateContent({
       contents: [
@@ -253,3 +253,4 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
+
